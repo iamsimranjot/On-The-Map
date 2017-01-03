@@ -14,7 +14,7 @@ enum HTTPMethod: String {
     case GET, POST, PUT, DELETE
 }
 
-//MARK:
+//MARK: APIUrlData
 
 struct APIUrlData {
     let scheme: String
@@ -25,5 +25,30 @@ struct APIUrlData {
 class SessionManager {
     
     //MARK: Properties
+    
+    private let session: URLSession!
+    private let apiUrlData: APIUrlData
+    
+    //MARK: Initializer
+    
+    init(apiData: APIUrlData) {
+        
+        //Get your Configuration Object
+        let sessionConfiguration = URLSessionConfiguration.default
+        
+        //Set the Configuration on your session object
+        session = URLSession(configuration: sessionConfiguration)
+        apiUrlData = apiData
+    }
+    
+    //MARK: Data Task Request
+    
+    func makeRequest(Url: URL, requestMethod: HTTPMethod, requestHeaders: [String:String]? = nil, requestBody: [String:String]? = nil, responseClosure: (NSData?, NSError?)){
+        
+        //Create request from passed URL
+        var request = URLRequest(url: Url)
+        request.httpMethod = requestMethod.rawValue
+        
+    }
     
 }
