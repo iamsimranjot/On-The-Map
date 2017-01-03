@@ -12,6 +12,7 @@
 		705D92161E0EFC7400963A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705D92151E0EFC7400963A9B /* Assets.xcassets */; };
 		705D92191E0EFC7400963A9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705D92171E0EFC7400963A9B /* LaunchScreen.storyboard */; };
 		705D92231E0F17DE00963A9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92221E0F17DE00963A9B /* LoginViewController.swift */; };
+		705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92241E0FC0B300963A9B /* SessionManager.swift */; };
 		F28F5C8802A90CEDC0506899 /* Pods_On_The_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		705D92181E0EFC7400963A9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		705D921A1E0EFC7400963A9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		705D92221E0F17DE00963A9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_The_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 				705D92221E0F17DE00963A9B /* LoginViewController.swift */,
 				705D92211E0F01C200963A9B /* Assets */,
 				705D92201E0F01A200963A9B /* Supporting Files */,
+				705D92241E0FC0B300963A9B /* SessionManager.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			files = (
 				705D92231E0F17DE00963A9B /* LoginViewController.swift in Sources */,
 				705D920F1E0EFC7400963A9B /* AppDelegate.swift in Sources */,
+				705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
