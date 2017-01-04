@@ -33,22 +33,62 @@ class SessionManager {
     
     init(apiData: APIUrlData) {
         
-        //Get your Configuration Object
+        // Get your Configuration Object
         let sessionConfiguration = URLSessionConfiguration.default
         
-        //Set the Configuration on your session object
+        // Set the Configuration on your session object
         session = URLSession(configuration: sessionConfiguration)
         apiUrlData = apiData
     }
     
     //MARK: Data Task Request
     
-    func makeRequest(Url: URL, requestMethod: HTTPMethod, requestHeaders: [String:String]? = nil, requestBody: [String:String]? = nil, responseClosure: (NSData?, NSError?)){
+    func makeRequest(Url: URL, requestMethod: HTTPMethod, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseClosure: @escaping (NSData?, String?) -> Void){
         
-        //Create request from passed URL
+        // Create request from passed URL
         var request = URLRequest(url: Url)
         request.httpMethod = requestMethod.rawValue
         
+        // Add headers if present
+        if let requestHeaders = requestHeaders {
+            for (key, value) in requestHeaders {
+                request.addValue(value, forHTTPHeaderField: key)
+            }
+        }
+        
+        // Add body if present
+        if let requestBody = requestBody {
+            request.httpBody = try! JSONSerialization.data(withJSONObject: requestBody, options: JSONSerialization.WritingOptions())
+        }
+        
+        // Create Task
+        let task = session.dataTask(with: request) {(data, response, error) in
+            
+            // Check for errors
+            if let error = error {
+                responseClosure(nil, error.localizedDescription)
+                return
+            }
+            
+            // Check for successful response via status codes
+            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 200 && statusCode > 299 {
+                responseClosure(nil, ErrorMsgs.unsuccessfulStatusCode)
+            }
+            
+            responseClosure(data as NSData?, nil);
+        }
+        
+        task.resume()
     }
     
+}
+
+
+// MARK: Session Manager Constants Extension
+
+extension SessionManager {
+    
+    struct ErrorMsgs {
+        static let unsuccessfulStatusCode = "Unsuccessful Status Code Received"
+    }
 }
