@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Global
 //MARK: HTTP Request Method Enum
 
 enum HTTPMethod: String {
@@ -81,8 +82,24 @@ class SessionManager {
         task.resume()
     }
     
+    //MARK: Build URL for request
+    
+    func urlForRequest(apiMethod: String?, pathExtension: String? = nil, parameters: [String : AnyObject]? = nil) -> URL {
+        var components = URLComponents()
+        components.scheme = apiUrlData.scheme
+        components.host = apiUrlData.host
+        components.path = apiUrlData.path + (apiMethod ?? "") + (pathExtension ?? "")
+        
+        if let parameters = parameters {
+            components.queryItems = [URLQueryItem]()
+            for (key, value) in parameters {
+                let queryItem = URLQueryItem(name: key, value: "\(value)")
+                components.queryItems?.append(queryItem)
+            }
+        }
+        return components.url!
+    }
 }
-
 
 // MARK: Session Manager Constants Extension
 
