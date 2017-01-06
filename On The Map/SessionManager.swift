@@ -101,7 +101,7 @@ class SessionManager {
     }
 }
 
-// MARK: Session Manager Constants Extension
+// MARK: Constants Extension
 
 extension SessionManager {
     

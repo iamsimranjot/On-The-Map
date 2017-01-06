@@ -1,15 +1,19 @@
 //
-//  AppConstants.swift
+//  Parse_OTM.swift
 //  On The Map
 //
 //  Created by SimranJot Singh on 06/01/17.
 //  Copyright © 2017 SimranJot Singh. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-//MARK : App Constants Main Struct
+class Parse_OTM {
+    
+}
 
-struct AppConstants {
+//MARK: Constants Extension 
 
+extension Parse_OTM {
+    
 }
