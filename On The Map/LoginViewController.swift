@@ -10,8 +10,12 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    //MARK: UI Configuration Enum
+    private enum UIElementState { case Initialize, Normal, Login }
+    
     //MARK: Outlets & Properties
     
+    @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -21,8 +25,13 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUIForState(.Initialize)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,18 +40,29 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginClicked(_ sender: Any) {
+        performSegue(withIdentifier: "Login", sender: self)
     }
 
     @IBAction func signUpClicked(_ sender: Any) {
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    private func setUIForState(_ state: UIElementState) {
+        switch state {
+        case .Normal:
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+            loginButton.isEnabled = true
+            contentStackView.alpha = 1.0
+        
+        case .Login:
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+            loginButton.isEnabled = false
+            contentStackView.alpha = 0.5
+            errorLabel.text = ""
+            
+        default: break
+        }
     }
-    */
 
 }

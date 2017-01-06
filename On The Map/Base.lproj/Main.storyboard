@@ -107,6 +107,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="r6t-eZ-IDf" id="YhY-qd-dlv"/>
+                        <outlet property="contentStackView" destination="t3T-v8-mMB" id="xPe-nM-mnt"/>
                         <outlet property="emailTextField" destination="FWp-VT-Eqp" id="jqx-Ks-3qW"/>
                         <outlet property="errorLabel" destination="Eu2-U2-JDk" id="2Me-5c-ib1"/>
                         <outlet property="loginButton" destination="vrN-v5-c1u" id="scB-xw-T5Y"/>
@@ -133,7 +134,7 @@
             </objects>
             <point key="canvasLocation" x="1164" y="131"/>
         </scene>
-        <!--Item 2-->
+        <!--Item-->
         <scene sceneID="iur-9i-tVf">
             <objects>
                 <viewController id="qOX-0e-MX7" sceneMemberID="viewController">
@@ -144,15 +145,27 @@
                     <view key="view" contentMode="scaleToFill" id="3eE-UY-g3K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WIp-DM-RhT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1fF-hy-LBH" firstAttribute="top" secondItem="WIp-DM-RhT" secondAttribute="bottom" id="GEy-Ea-j2M"/>
+                            <constraint firstItem="WIp-DM-RhT" firstAttribute="leading" secondItem="3eE-UY-g3K" secondAttribute="leading" id="Ip2-EW-S2N"/>
+                            <constraint firstItem="WIp-DM-RhT" firstAttribute="top" secondItem="kgT-nF-cCf" secondAttribute="bottom" id="gVh-dq-vVU"/>
+                            <constraint firstAttribute="trailing" secondItem="WIp-DM-RhT" secondAttribute="trailing" id="va4-9Z-c8j"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="REB-Dd-JvO"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="list" id="REB-Dd-JvO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJE-hO-Bjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3053" y="460"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="4BX-XG-eSY">
             <objects>
                 <viewController id="WZ7-X7-JeE" sceneMemberID="viewController">
@@ -163,9 +176,20 @@
                     <view key="view" contentMode="scaleToFill" id="RKV-WC-79M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-Pi-bCj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yZc-K0-aoQ" firstAttribute="top" secondItem="Gko-Pi-bCj" secondAttribute="bottom" id="5dD-Zh-ugf"/>
+                            <constraint firstItem="Gko-Pi-bCj" firstAttribute="leading" secondItem="RKV-WC-79M" secondAttribute="leading" id="Lzy-y3-BGi"/>
+                            <constraint firstItem="Gko-Pi-bCj" firstAttribute="top" secondItem="2gf-4E-XDh" secondAttribute="bottom" id="Vnk-k2-7XT"/>
+                            <constraint firstAttribute="trailing" secondItem="Gko-Pi-bCj" secondAttribute="trailing" id="y7g-Ch-Yx9"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="1mm-Wb-fly"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="1mm-Wb-fly"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjQ-eq-puU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,7 +198,7 @@
         <!--On The Map-->
         <scene sceneID="yOX-Zw-mIZ">
             <objects>
-                <tabBarController id="chE-2U-fOD" sceneMemberID="viewController">
+                <tabBarController id="chE-2U-fOD" customClass="OnTheMapTabBarController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="tYH-F0-tI0">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="M4f-qc-bAC"/>
                         <rightBarButtonItems>
@@ -198,6 +222,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
         <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
