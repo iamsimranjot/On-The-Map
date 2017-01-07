@@ -21,7 +21,7 @@ struct AppConstants {
     //MARK: Errors
     
     struct Errors {
-        static let usernameEmpty = "Please provide a username."
+        static let usernameEmpty = "Please provide an Email Address."
         static let passwordEmpty = "Please provide the password."
     }
     

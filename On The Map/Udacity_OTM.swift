@@ -209,7 +209,7 @@ extension Udacity_OTM {
         static let session = "session"
         static let user = "user"
         static let firstName = "first_name"
-        static let lastName = "last_Name"
+        static let lastName = "last_name"
         static let status = "status"
         static let error = "error"
     }

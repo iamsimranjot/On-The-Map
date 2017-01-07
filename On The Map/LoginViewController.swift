@@ -36,36 +36,40 @@ class LoginViewController: UIViewController {
         
         //Set UI State
         setUIForState(.Normal)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        //Confirm TextFields Delegate's
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     //MARK: Actions
     
     @IBAction func loginClicked(_ sender: Any) {
         
-        // Set UI State
-        setUIForState(.Login)
-        
         if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             throwError()
         } else {
+            
+            // Set UI State
+            setUIForState(.Login)
+            
             udacity_otm.loginWithCredentials(username: emailTextField.text!, password: passwordTextField.text!) { (userKey, error) in
                 
-                //Check for user key
-                if let userKey = userKey {
-                    self.udacity_otm.fetchStudentData(fromKey: userKey) { (student, error) in
-                        if let _ = student {
-                            self.performSegue(withIdentifier: AppConstants.segueIdentifiers.loginSegue, sender: self)
-                        } else {
-                            self.alertWithError(error: error!)
+                DispatchQueue.main.async {
+                    //Check for user key
+                    if let userKey = userKey {
+                        self.udacity_otm.fetchStudentData(fromKey: userKey) { (student, error) in
+                            DispatchQueue.main.async {
+                                if let _ = student {
+                                    self.performSegue(withIdentifier: AppConstants.segueIdentifiers.loginSegue, sender: self)
+                                } else {
+                                    self.alertWithError(error: error!)
+                                }
+                            }
                         }
+                    } else {
+                        self.alertWithError(error: error!)
                     }
-                } else {
-                    self.alertWithError(error: error!)
                 }
             }
         }
@@ -82,20 +86,23 @@ class LoginViewController: UIViewController {
     
     private func setUIForState(_ state: UIElementState) {
         switch state {
+            
+        case .Initialize:
+            loginButton.layer.cornerRadius = 4.0
+            errorLabel.text = ""
+            
         case .Normal:
             activityIndicator.isHidden = true
             activityIndicator.stopAnimating()
             loginButton.isEnabled = true
             contentStackView.alpha = 1.0
-        
+    
         case .Login:
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
             loginButton.isEnabled = false
             contentStackView.alpha = 0.5
             errorLabel.text = ""
-            
-        default: break
         }
     }
     
@@ -110,14 +117,15 @@ class LoginViewController: UIViewController {
     }
     
     private func animateOnError(textField: UITextField){
+        
         UIView.animate(withDuration: 1.0){
             let animate = CABasicAnimation.init(keyPath: "shake")
-            animate.duration = 0.2
+            animate.duration = 0.1
             animate.repeatCount = 2
             animate.autoreverses = true
-            animate.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 5, y: textField.center.y))
-            animate.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 5, y: textField.center.y))
-            textField.layer.add(animate, forKey: "shake")
+            animate.fromValue = NSValue(cgPoint: CGPoint(x: self.contentStackView.center.x - 5, y: self.contentStackView.center.y))
+            animate.toValue = NSValue(cgPoint: CGPoint(x: self.contentStackView.center.x + 5, y: self.contentStackView.center.y))
+            self.contentStackView.layer.add(animate, forKey: "shake")
         }
     }
         
@@ -127,4 +135,13 @@ class LoginViewController: UIViewController {
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)
     }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
