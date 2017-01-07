@@ -54,14 +54,19 @@ class LoginViewController: UIViewController {
             throwError()
         } else {
             udacity_otm.loginWithCredentials(username: emailTextField.text!, password: passwordTextField.text!) { (userKey, error) in
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    if let userKey = userKey {
-//                        self.getStudentWithUserKey(userKey)
-//
-//                    } else {
-//                        self.alertWithError(error!.localizedDescription)
-//                    }
-//                }
+                
+                //Check for user key
+                if let userKey = userKey {
+                    self.udacity_otm.fetchStudentData(fromKey: userKey) { (student, error) in
+                        if let _ = student {
+                            self.performSegue(withIdentifier: AppConstants.segueIdentifiers.loginSegue, sender: self)
+                        } else {
+                            self.alertWithError(error: error!)
+                        }
+                    }
+                } else {
+                    self.alertWithError(error: error!)
+                }
             }
         }
     }
@@ -114,5 +119,12 @@ class LoginViewController: UIViewController {
             animate.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 5, y: textField.center.y))
             textField.layer.add(animate, forKey: "shake")
         }
+    }
+        
+    private func alertWithError(error: String) {
+        setUIForState(.Normal)
+        let alertView = UIAlertController(title: AppConstants.Alert.LoginAlertTitle, message: error, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
     }
 }

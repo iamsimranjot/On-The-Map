@@ -24,4 +24,16 @@ struct AppConstants {
         static let usernameEmpty = "Please provide a username."
         static let passwordEmpty = "Please provide the password."
     }
+    
+    //MARK: Alerts
+    
+    struct Alert {
+        static let LoginAlertTitle = "Login Error"
+    }
+    
+    //MARK: Alert Actions
+    
+    struct AlertActions {
+        static let dismiss = "Dismiss"
+    }
 }

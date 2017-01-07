@@ -95,8 +95,69 @@ class Udacity_OTM {
     
     //MARK: Fetch Student Data through key
     
-    //func fetchStudentData(fromKey: String, responseClosure)
+    func fetchStudentData(fromKey: String, responseClosure: @escaping (_ student: StudentModel?, _ error: String?) -> Void){
+        
+        // Set Students URL
+        let studentURL = sessionObject.urlForRequest(apiMethod: APIMethods.users, pathExtension: "/\(fromKey)")
+        
+        // Make Request
+        makeRequestToUdacity(url: studentURL, method: .GET) { (jsonResponseDic, error) in
+            
+            // Check for Errors
+            guard error == nil else {
+                responseClosure(nil, error)
+                return
+            }
+            
+            //Unwrap the Json Dictionary
+            if let jsonResponseDic = jsonResponseDic, let userInformation = jsonResponseDic[JSONResponseKeys.user] as? [String : AnyObject], let firstName = userInformation[JSONResponseKeys.firstName] as? String, let lastName = userInformation[JSONResponseKeys.lastName] as? String {
+                responseClosure(StudentModel(uniqueKey: fromKey, firstName: firstName, lastName: lastName, mediaURL: ""), nil)
+                return
+            }
+            
+            responseClosure(nil, Errors.noUserData)
+        }
+    }
     
+    //MARK: Logout from Udacity
+    
+    func logout(responseClosure: @escaping (_ success: Bool, _ error: String?) -> Void){
+        
+        // Set Logout URL
+        let logoutURL = sessionObject.urlForRequest(apiMethod: APIMethods.session)
+        
+        // Check Cookies & Set Required Headers
+        var xsrfCookie: HTTPCookie? = nil
+        var logoutHeaders = [String : AnyObject]()
+        
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == Cookies.XSRF_Token{
+                xsrfCookie = cookie
+            }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            logoutHeaders[APIHeaderKeys.XSRF_Token] = xsrfCookie.value as AnyObject?
+        }
+        
+        makeRequestToUdacity(url: logoutURL, method: .DELETE) { (jsonResponseDic, error) in
+            
+            //Check for errors
+            guard error == nil else {
+                responseClosure(false, error)
+                return
+            }
+            
+            //Unwrap Json response
+            if let jsonResponseDic = jsonResponseDic, let _ = jsonResponseDic[JSONResponseKeys.session] as? [String : AnyObject] {
+                responseClosure(true, nil)
+                return
+            }
+            
+            responseClosure(false, Errors.logoutError)
+        }
+    }
 }
 
 //MARK: Constants Extension
@@ -115,6 +176,7 @@ extension Udacity_OTM {
     
     struct APIMethods {
         static let session = "/session"
+        static let users = "/users"
     }
     
     //MARK: API Header Keys
@@ -122,6 +184,7 @@ extension Udacity_OTM {
     struct APIHeaderKeys  {
         static let accept = "Accept"
         static let contentType = "Content-Type"
+        static let XSRF_Token = "X-XSRF-TOKEN"
     }
     
     // MARK: API Header Values
@@ -151,11 +214,19 @@ extension Udacity_OTM {
         static let error = "error"
     }
     
+    // MARK: Cookies
+    
+    struct Cookies {
+        static let XSRF_Token = "XSRF-TOKEN"
+    }
+    
     //MARK: Errors
     
     struct Errors {
         static let loginError = "User was Unable to Login. Please try again later."
         static let logoutError = "User was Unable to Logout. Please try again later."
+        static let noUserData = "Not able to access user data."
+
     }
     
     //MARK: SignUp URL
