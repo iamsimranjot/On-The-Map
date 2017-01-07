@@ -89,21 +89,29 @@ class LoginViewController: UIViewController {
             
         case .Initialize:
             loginButton.layer.cornerRadius = 4.0
+            passwordTextField.isSecureTextEntry = true
             errorLabel.text = ""
             
         case .Normal:
-            activityIndicator.isHidden = true
+            setEnabled(enabled: true)
+            emailTextField.text = ""
+            passwordTextField.text = ""
             activityIndicator.stopAnimating()
-            loginButton.isEnabled = true
             contentStackView.alpha = 1.0
     
         case .Login:
-            activityIndicator.isHidden = false
+            setEnabled(enabled: false)
             activityIndicator.startAnimating()
-            loginButton.isEnabled = false
             contentStackView.alpha = 0.5
             errorLabel.text = ""
         }
+    }
+    
+    private func setEnabled(enabled: Bool){
+        activityIndicator.isHidden = enabled
+        loginButton.isEnabled = enabled
+        emailTextField.isEnabled = enabled
+        passwordTextField.isEnabled = enabled
     }
     
     private func throwError(){

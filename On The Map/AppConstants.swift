@@ -29,6 +29,7 @@ struct AppConstants {
     
     struct Alert {
         static let LoginAlertTitle = "Login Error"
+        static let LogoutAlertTitle = "Logout Error"
     }
     
     //MARK: Alert Actions

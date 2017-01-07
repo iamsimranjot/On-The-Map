@@ -9,27 +9,48 @@
 import UIKit
 
 class OnTheMapTabBarController: UITabBarController {
+    
+    //MARK: Properties
+    
+    let udacity_otm = Udacity_OTM.sharedInstance()
 
+    //MARK: LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   //MARK: Actions
+    
+    @IBAction func logoutClicked(_ sender: Any) {
+        udacity_otm.logout(){ (success, error) in
+            if success == true {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                DispatchQueue.main.async{
+                    self.alertWithError(error: error!)
+                }
+            }
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func addPin(_ sender: Any) {
     }
-    */
-
+    
+    @IBAction func refresh(_ sender: Any) {
+    }
+    
+    //MARK: Helper Methods
+    
+    private func alertWithError(error: String) {
+        let alertView = UIAlertController(title: AppConstants.Alert.LogoutAlertTitle, message: error, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
 }

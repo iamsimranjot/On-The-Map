@@ -207,10 +207,22 @@
             <objects>
                 <tabBarController id="chE-2U-fOD" customClass="OnTheMapTabBarController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="tYH-F0-tI0">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="M4f-qc-bAC"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="M4f-qc-bAC">
+                            <connections>
+                                <action selector="logoutClicked:" destination="chE-2U-fOD" id="SOD-H3-WgO"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="H7R-ZJ-aJI"/>
-                            <barButtonItem image="pin" id="321-5i-FB3"/>
+                            <barButtonItem systemItem="refresh" id="H7R-ZJ-aJI">
+                                <connections>
+                                    <action selector="refresh:" destination="chE-2U-fOD" id="LdD-U1-Kd2"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="321-5i-FB3">
+                                <connections>
+                                    <action selector="addPin:" destination="chE-2U-fOD" id="fiU-nk-FdK"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="nBS-SI-ItO">

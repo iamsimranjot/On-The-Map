@@ -13,6 +13,8 @@
 		7013068D1E1FCD69003AE838 /* Parse_OTM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013068C1E1FCD69003AE838 /* Parse_OTM.swift */; };
 		7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013068E1E211BC7003AE838 /* StudentModel.swift */; };
 		701306911E21305F003AE838 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701306901E21305F003AE838 /* MapViewController.swift */; };
+		701306951E21B365003AE838 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701306941E21B365003AE838 /* LocationModel.swift */; };
+		701306971E21B3BC003AE838 /* StudentLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701306961E21B3BC003AE838 /* StudentLocationModel.swift */; };
 		705D920F1E0EFC7400963A9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D920E1E0EFC7400963A9B /* AppDelegate.swift */; };
 		705D92141E0EFC7400963A9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705D92121E0EFC7400963A9B /* Main.storyboard */; };
 		705D92161E0EFC7400963A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705D92151E0EFC7400963A9B /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 		7013068C1E1FCD69003AE838 /* Parse_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parse_OTM.swift; sourceTree = "<group>"; };
 		7013068E1E211BC7003AE838 /* StudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 		701306901E21305F003AE838 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		701306941E21B365003AE838 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		701306961E21B3BC003AE838 /* StudentLocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationModel.swift; sourceTree = "<group>"; };
 		705D920B1E0EFC7400963A9B /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		705D920E1E0EFC7400963A9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		705D92131E0EFC7400963A9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				705D92241E0FC0B300963A9B /* SessionManager.swift */,
 				7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */,
 				7013068E1E211BC7003AE838 /* StudentModel.swift */,
+				701306941E21B365003AE838 /* LocationModel.swift */,
+				701306961E21B3BC003AE838 /* StudentLocationModel.swift */,
 				7013068C1E1FCD69003AE838 /* Parse_OTM.swift */,
 			);
 			path = "On The Map";
@@ -160,6 +166,7 @@
 				TargetAttributes = {
 					705D920A1E0EFC7400963A9B = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VNF3AND99V;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -256,6 +263,8 @@
 				705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */,
 				7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */,
 				701306871E1FBD40003AE838 /* AppConstants.swift in Sources */,
+				701306951E21B365003AE838 /* LocationModel.swift in Sources */,
+				701306971E21B3BC003AE838 /* StudentLocationModel.swift in Sources */,
 				7013068D1E1FCD69003AE838 /* Parse_OTM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +389,7 @@
 			baseConfigurationReference = 4021FA32F2F704F3B9362411 /* Pods-On The Map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VNF3AND99V;
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -395,7 +404,7 @@
 			baseConfigurationReference = 6D96559891F453C9C99E93EC /* Pods-On The Map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VNF3AND99V;
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
