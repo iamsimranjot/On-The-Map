@@ -11,6 +11,7 @@
 		701306871E1FBD40003AE838 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701306861E1FBD40003AE838 /* AppConstants.swift */; };
 		7013068B1E1FCCEA003AE838 /* Udacity_OTM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */; };
 		7013068D1E1FCD69003AE838 /* Parse_OTM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013068C1E1FCD69003AE838 /* Parse_OTM.swift */; };
+		7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013068E1E211BC7003AE838 /* StudentModel.swift */; };
 		705D920F1E0EFC7400963A9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D920E1E0EFC7400963A9B /* AppDelegate.swift */; };
 		705D92141E0EFC7400963A9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705D92121E0EFC7400963A9B /* Main.storyboard */; };
 		705D92161E0EFC7400963A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705D92151E0EFC7400963A9B /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		701306861E1FBD40003AE838 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Udacity_OTM.swift; sourceTree = "<group>"; };
 		7013068C1E1FCD69003AE838 /* Parse_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parse_OTM.swift; sourceTree = "<group>"; };
+		7013068E1E211BC7003AE838 /* StudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 		705D920B1E0EFC7400963A9B /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		705D920E1E0EFC7400963A9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		705D92131E0EFC7400963A9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				705D92201E0F01A200963A9B /* Supporting Files */,
 				705D92241E0FC0B300963A9B /* SessionManager.swift */,
 				7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */,
+				7013068E1E211BC7003AE838 /* StudentModel.swift */,
 				7013068C1E1FCD69003AE838 /* Parse_OTM.swift */,
 			);
 			path = "On The Map";
@@ -247,6 +250,7 @@
 				701306851E1F8FE5003AE838 /* OnTheMapTabBarController.swift in Sources */,
 				705D920F1E0EFC7400963A9B /* AppDelegate.swift in Sources */,
 				705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */,
+				7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */,
 				701306871E1FBD40003AE838 /* AppConstants.swift in Sources */,
 				7013068D1E1FCD69003AE838 /* Parse_OTM.swift in Sources */,
 			);
