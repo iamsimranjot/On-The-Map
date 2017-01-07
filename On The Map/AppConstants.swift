@@ -11,5 +11,17 @@ import UIKit
 //MARK : App Constants Main Struct
 
 struct AppConstants {
-
+    
+    //MARK: Segue Identifiers
+    
+    struct segueIdentifiers {
+        static let loginSegue = "Login"
+    }
+    
+    //MARK: Errors
+    
+    struct Errors {
+        static let usernameEmpty = "Please provide a username."
+        static let passwordEmpty = "Please provide the password."
+    }
 }

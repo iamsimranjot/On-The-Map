@@ -61,7 +61,6 @@
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8qO-r8-MQZ"/>
-                                            <segue destination="UpA-lh-Pnw" kind="show" identifier="Login" id="QNt-RM-q8I"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btQ-Ts-L50">
@@ -113,10 +112,12 @@
                         <outlet property="loginButton" destination="vrN-v5-c1u" id="scB-xw-T5Y"/>
                         <outlet property="passwordTextField" destination="c2f-CH-9T2" id="fdu-Kb-kDz"/>
                         <outlet property="signupButton" destination="btQ-Ts-L50" id="oDE-If-mro"/>
+                        <segue destination="UpA-lh-Pnw" kind="show" identifier="Login" id="UCD-rS-4wa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="41" y="131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TKr-WZ-bFn">
