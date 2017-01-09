@@ -20,7 +20,11 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Confirm MapView Delegate
         mapView.delegate = self
+        
+        //Set Data Source for Pins
+        
     }
 
     //MARK: Cannot Open URL
