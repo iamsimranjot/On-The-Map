@@ -11,26 +11,59 @@ import MapKit
 
 class MapViewController: UIViewController {
 
+    //MARK: Outlets
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    //MARK: LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        mapView.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: Cannot Open URL
+    
+    func alertWithError(error: String) {
+        let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+}
+
+// MARK: - OTMMapViewController: MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "OTMPin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = UIColor.red
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            if let mediaURL = NSURL(string: ((view.annotation?.subtitle)!)!) {
+                if UIApplication.shared.canOpenURL(mediaURL as URL) {
+                    UIApplication.shared.open(mediaURL as URL)
+                } else {
+                    alertWithError(error: AppConstants.Errors.cannotOpenURL)
+                }
+            }
+        }
     }
-    */
-
 }

@@ -31,7 +31,7 @@ class Parse_OTM {
     
     //MARK: Make Parse Client's Request
     
-    private func makeRequestToUdacity(url: URL, method: HTTPMethod, body: [String : AnyObject]? = nil, responseClosure
+    private func makeRequestToParse(url: URL, method: HTTPMethod, body: [String : AnyObject]? = nil, responseClosure
         : @escaping (_ jsonAsDictionary: [String:AnyObject]?, _ error: String?) -> Void) {
         
         // Add Headers
@@ -53,7 +53,62 @@ class Parse_OTM {
         }
     }
     
+    //MARK: Get Multiple Student Locations
     
+    func getMultipleStudentLocations(responseClosure: @escaping (_ studentLocations: [StudentLocationModel]?, _ error: String?) -> Void){
+        
+        // Build URL
+        let url = sessionObject.urlForRequest(apiMethod: APIMethod.studentLocation, parameters: [
+            ParameterKeys.limit: ParameterValues.hundred as AnyObject,
+            ParameterKeys.order: ParameterValues.recentlyUpdated as AnyObject
+            ])
+        
+        // Make Request
+        makeRequestToParse(url: url, method: .GET){ (jsonResponseDic, error) in
+            
+            // Check for Errors
+            guard error == nil else {
+                responseClosure(nil, error)
+                return
+            }
+            
+            // Unwrap Response Json
+            if let jsonResponseDic = jsonResponseDic, let studentLocationDics = jsonResponseDic[JSONResponseKeys.results] as? [[String : AnyObject]] {
+                responseClosure(StudentLocationModel.locationsFromDictionaries(dictionaries: studentLocationDics), nil)
+                return
+            }
+            
+            responseClosure(nil, error)
+        }
+        
+        //MARK: Get Particular Student Location
+        
+        func getParticularStudentLocation(uniqueKey: String, responseClosure: @escaping (_ studentModel: StudentLocationModel?, _ error: String?) -> Void) {
+            
+            //Build URL
+            let locationURL = sessionObject.urlForRequest(apiMethod: APIMethod.studentLocation, parameters: [ParameterKeys.Where: "{\"\(ParameterKeys.uniqueKey)\":\"" + "\(uniqueKey)" + "\"}" as AnyObject])
+            
+            //Make Request
+            makeRequestToParse(url: locationURL, method: .GET) { (jsonResponseDic, error) in
+                
+                // Check for errors
+                guard error == nil else {
+                    responseClosure(nil, error)
+                    return
+                }
+                
+                // Unwrap Response Json
+                if let jsonResponseDic = jsonResponseDic, let studentLocationDic = jsonResponseDic[JSONResponseKeys.results] as? [[String : AnyObject]] {
+                    if studentLocationDic.count == 1 {
+                        responseClosure(StudentLocationModel(dictionary: studentLocationDic[0]), nil)
+                        return
+                    }
+                }
+                
+                responseClosure(nil, error)
+            }
+        }
+    }
     
 }
 

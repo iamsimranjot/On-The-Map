@@ -23,6 +23,7 @@ struct AppConstants {
     struct Errors {
         static let usernameEmpty = "Please provide an Email Address."
         static let passwordEmpty = "Please provide the password."
+        static let cannotOpenURL = "Cannot Open URL"
     }
     
     //MARK: Alerts

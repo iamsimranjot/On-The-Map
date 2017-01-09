@@ -13,6 +13,7 @@ struct StudentLocationModel {
     let student: StudentModel
     let location: LocationModel
     let objectID: String
+    private let parse_otm = Parse_OTM.sharedInstance()
     
     init(dictionary: [String : AnyObject]) {
         objectID = dictionary[Parse_OTM.JSONResponseKeys.objectID] as? String ?? ""
@@ -33,12 +34,16 @@ struct StudentLocationModel {
         location = LocationModel(latitude: latitude as! Double, longitude: longitude as! Double, mapString: mapString as! String)
     }
     
-    //Helper Method
+    //Helper Methods
     static func locationsFromDictionaries(dictionaries: [[String:AnyObject]]) -> [StudentLocationModel] {
         var studentLocations = [StudentLocationModel]()
         for studentDictionary in dictionaries {
             studentLocations.append(StudentLocationModel(dictionary: studentDictionary))
         }
         return studentLocations
+    }
+    
+    func pinDownStudentsLocations() {
+        
     }
 }
