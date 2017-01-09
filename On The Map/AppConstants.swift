@@ -24,6 +24,7 @@ struct AppConstants {
         static let usernameEmpty = "Please provide an Email Address."
         static let passwordEmpty = "Please provide the password."
         static let cannotOpenURL = "Cannot Open URL"
+        static let unableToUpdateLocations = "Unable to update and pin down student locations."
     }
     
     //MARK: Alerts
@@ -37,5 +38,12 @@ struct AppConstants {
     
     struct AlertActions {
         static let dismiss = "Dismiss"
+    }
+    
+    //MARK: Notifications Names
+    
+    struct notifications {
+        static let studentLocationsPinnedDown = "Student Locations Pinned Down"
+        static let studentLocationsPinnedDownError = "Student Locations Pinned Down Error"
     }
 }
