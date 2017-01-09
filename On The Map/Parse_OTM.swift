@@ -80,39 +80,39 @@ class Parse_OTM {
             
             responseClosure(nil, error)
         }
+    }
+    
+    //MARK: Get Particular Student Location
+    
+    func getParticularStudentLocation(uniqueKey: String, responseClosure: @escaping (_ studentModel: StudentLocationModel?, _ error: String?) -> Void) {
         
-        //MARK: Get Particular Student Location
+        //Build URL
+        let locationURL = sessionObject.urlForRequest(apiMethod: APIMethod.studentLocation, parameters: [ParameterKeys.Where: "{\"\(ParameterKeys.uniqueKey)\":\"" + "\(uniqueKey)" + "\"}" as AnyObject])
         
-        func getParticularStudentLocation(uniqueKey: String, responseClosure: @escaping (_ studentModel: StudentLocationModel?, _ error: String?) -> Void) {
+        //Make Request
+        makeRequestToParse(url: locationURL, method: .GET) { (jsonResponseDic, error) in
             
-            //Build URL
-            let locationURL = sessionObject.urlForRequest(apiMethod: APIMethod.studentLocation, parameters: [ParameterKeys.Where: "{\"\(ParameterKeys.uniqueKey)\":\"" + "\(uniqueKey)" + "\"}" as AnyObject])
+            // Check for errors
+            guard error == nil else {
+                responseClosure(nil, error)
+                return
+            }
             
-            //Make Request
-            makeRequestToParse(url: locationURL, method: .GET) { (jsonResponseDic, error) in
-                
-                // Check for errors
-                guard error == nil else {
-                    responseClosure(nil, error)
+            // Unwrap Response Json
+            if let jsonResponseDic = jsonResponseDic, let studentLocationDic = jsonResponseDic[JSONResponseKeys.results] as? [[String : AnyObject]] {
+                if studentLocationDic.count == 1 {
+                    responseClosure(StudentLocationModel(dictionary: studentLocationDic[0]), nil)
                     return
                 }
-                
-                // Unwrap Response Json
-                if let jsonResponseDic = jsonResponseDic, let studentLocationDic = jsonResponseDic[JSONResponseKeys.results] as? [[String : AnyObject]] {
-                    if studentLocationDic.count == 1 {
-                        responseClosure(StudentLocationModel(dictionary: studentLocationDic[0]), nil)
-                        return
-                    }
-                }
-                
-                responseClosure(nil, error)
             }
+            
+            responseClosure(nil, error)
         }
     }
     
 }
 
-//MARK: Constants Extension 
+//MARK: Constants Extension
 
 extension Parse_OTM {
     

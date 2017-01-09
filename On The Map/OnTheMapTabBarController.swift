@@ -13,6 +13,7 @@ class OnTheMapTabBarController: UITabBarController {
     //MARK: Properties
     
     let udacity_otm = Udacity_OTM.sharedInstance()
+    let parse_otm = Parse_OTM.sharedInstance()
 
     //MARK: LifeCycle Methods
     
@@ -51,6 +52,12 @@ class OnTheMapTabBarController: UITabBarController {
         let alertView = UIAlertController(title: AppConstants.Alert.LogoutAlertTitle, message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func pinDownStudentsLocations() {
+        parse_otm.getMultipleStudentLocations(){ (studentLocationDics, error) in
+            
+        }
     }
     
 }

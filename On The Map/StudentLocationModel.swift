@@ -13,7 +13,6 @@ struct StudentLocationModel {
     let student: StudentModel
     let location: LocationModel
     let objectID: String
-    private let parse_otm = Parse_OTM.sharedInstance()
     
     init(dictionary: [String : AnyObject]) {
         objectID = dictionary[Parse_OTM.JSONResponseKeys.objectID] as? String ?? ""
@@ -41,9 +40,5 @@ struct StudentLocationModel {
             studentLocations.append(StudentLocationModel(dictionary: studentDictionary))
         }
         return studentLocations
-    }
-    
-    func pinDownStudentsLocations() {
-        
     }
 }
