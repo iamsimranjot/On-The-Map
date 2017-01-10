@@ -214,7 +214,6 @@
         <!--Item-->
         <scene sceneID="11s-0w-6B6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVF-v0-mut" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="iBY-be-Vnh" customClass="OTMTableViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" id="w9t-tA-0yz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -273,6 +272,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" image="list" id="NuR-3F-wZG"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVF-v0-mut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3056.8000000000002" y="488.90554722638683"/>
         </scene>

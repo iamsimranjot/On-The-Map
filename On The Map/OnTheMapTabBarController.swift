@@ -46,6 +46,7 @@ class OnTheMapTabBarController: UITabBarController {
     }
     
     @IBAction func refresh(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConstants.notifications.refreshCalled), object: nil)
         dataSource_otm.pinDownStudentsLocations()
     }
     

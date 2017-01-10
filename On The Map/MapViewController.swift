@@ -28,12 +28,12 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         
         // Observe Notifications
-        NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
+        observe()
         
         dataSource_otm.pinDownStudentsLocations()
     }
 
-    //MARK: Cannot Open URL
+    //MARK: Helper Methods
     
     func alertWithError(error: String) {
         let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
@@ -55,7 +55,20 @@ class MapViewController: UIViewController {
         DispatchQueue.main.async {
             self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.addAnnotations(annotations)
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self.view.alpha = 1.0
         }
+    }
+    
+    func disableUI() {
+        self.view.alpha = 0.7
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func observe() {
+        // Observe Notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableUI), name: NSNotification.Name(rawValue: AppConstants.notifications.refreshCalled), object: nil)
     }
 }
 

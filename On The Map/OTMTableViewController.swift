@@ -23,15 +23,14 @@ class OTMTableViewController: UITableViewController {
         tableView.delegate = self
         
         // Observe Notifications
-        NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
+        observe()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    //MARK: Helper Methods
     
     func studentLocationsUpdated() {
+        UIApplication.shared.endIgnoringInteractionEvents()
+        self.view.alpha = 1.0
         tableView.reloadData()
     }
     
@@ -39,6 +38,17 @@ class OTMTableViewController: UITableViewController {
         let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func disableUI() {
+        self.view.alpha = 0.7
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func observe() {
+        // Observe Notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableUI), name: NSNotification.Name(rawValue: AppConstants.notifications.refreshCalled), object: nil)
     }
     
     //MARK: Table Data Source
