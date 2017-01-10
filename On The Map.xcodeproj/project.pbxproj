@@ -22,6 +22,7 @@
 		705D92191E0EFC7400963A9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705D92171E0EFC7400963A9B /* LaunchScreen.storyboard */; };
 		705D92231E0F17DE00963A9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92221E0F17DE00963A9B /* LoginViewController.swift */; };
 		705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92241E0FC0B300963A9B /* SessionManager.swift */; };
+		70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70703FB01E25018300726AFF /* OTMTableViewController.swift */; };
 		F28F5C8802A90CEDC0506899 /* Pods_On_The_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		705D921A1E0EFC7400963A9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		705D92221E0F17DE00963A9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "On The Map/SessionManager.swift"; sourceTree = "<group>"; };
+		70703FB01E25018300726AFF /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
 		91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_The_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				705D92221E0F17DE00963A9B /* LoginViewController.swift */,
 				701306841E1F8FE5003AE838 /* OnTheMapTabBarController.swift */,
 				701306901E21305F003AE838 /* MapViewController.swift */,
+				70703FB01E25018300726AFF /* OTMTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				705D920F1E0EFC7400963A9B /* AppDelegate.swift in Sources */,
 				701306911E21305F003AE838 /* MapViewController.swift in Sources */,
 				701FBFDB1E243EA200468061 /* DataSource_OTM.swift in Sources */,
+				70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */,
 				705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */,
 				7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */,
 				701306871E1FBD40003AE838 /* AppConstants.swift in Sources */,
