@@ -23,6 +23,7 @@
 		705D92231E0F17DE00963A9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92221E0F17DE00963A9B /* LoginViewController.swift */; };
 		705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92241E0FC0B300963A9B /* SessionManager.swift */; };
 		70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70703FB01E25018300726AFF /* OTMTableViewController.swift */; };
+		70E737491E250C7C00E85A0B /* StudentLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E737481E250C7C00E85A0B /* StudentLocationCell.swift */; };
 		F28F5C8802A90CEDC0506899 /* Pods_On_The_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		705D92221E0F17DE00963A9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "On The Map/SessionManager.swift"; sourceTree = "<group>"; };
 		70703FB01E25018300726AFF /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
+		70E737481E250C7C00E85A0B /* StudentLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationCell.swift; sourceTree = "<group>"; };
 		91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_The_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 				701306861E1FBD40003AE838 /* AppConstants.swift */,
 				70703FAE1E24F34900726AFF /* NetworkManager */,
 				70703FAD1E24F2F800726AFF /* Models */,
+				70E737471E250C3A00E85A0B /* View */,
 				70703FAF1E24F38C00726AFF /* ViewControllers */,
 				705D92211E0F01C200963A9B /* Assets */,
 				705D92201E0F01A200963A9B /* Supporting Files */,
@@ -152,6 +155,15 @@
 				70703FB01E25018300726AFF /* OTMTableViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		70E737471E250C3A00E85A0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70E737481E250C7C00E85A0B /* StudentLocationCell.swift */,
+			);
+			name = View;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		84C467D6B70CAC3465F03E90 /* Frameworks */ = {
@@ -294,6 +306,7 @@
 				701FBFDB1E243EA200468061 /* DataSource_OTM.swift in Sources */,
 				70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */,
 				705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */,
+				70E737491E250C7C00E85A0B /* StudentLocationCell.swift in Sources */,
 				7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */,
 				701306871E1FBD40003AE838 /* AppConstants.swift in Sources */,
 				701306951E21B365003AE838 /* LocationModel.swift in Sources */,
