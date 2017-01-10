@@ -30,8 +30,8 @@
 		6D96559891F453C9C99E93EC /* Pods-On The Map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On The Map.release.xcconfig"; path = "Pods/Target Support Files/Pods-On The Map/Pods-On The Map.release.xcconfig"; sourceTree = "<group>"; };
 		701306841E1F8FE5003AE838 /* OnTheMapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapTabBarController.swift; sourceTree = "<group>"; };
 		701306861E1FBD40003AE838 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Udacity_OTM.swift; sourceTree = "<group>"; };
-		7013068C1E1FCD69003AE838 /* Parse_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parse_OTM.swift; sourceTree = "<group>"; };
+		7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Udacity_OTM.swift; path = "On The Map/Udacity_OTM.swift"; sourceTree = "<group>"; };
+		7013068C1E1FCD69003AE838 /* Parse_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parse_OTM.swift; path = "On The Map/Parse_OTM.swift"; sourceTree = "<group>"; };
 		7013068E1E211BC7003AE838 /* StudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 		701306901E21305F003AE838 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		701306941E21B365003AE838 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -126,8 +126,6 @@
 				701306961E21B3BC003AE838 /* StudentLocationModel.swift */,
 				701306941E21B365003AE838 /* LocationModel.swift */,
 				7013068E1E211BC7003AE838 /* StudentModel.swift */,
-				7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */,
-				7013068C1E1FCD69003AE838 /* Parse_OTM.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -136,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				705D92241E0FC0B300963A9B /* SessionManager.swift */,
+				7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */,
+				7013068C1E1FCD69003AE838 /* Parse_OTM.swift */,
 			);
 			name = NetworkManager;
 			path = ..;

@@ -18,19 +18,19 @@ struct StudentLocationModel {
         objectID = dictionary[Parse_OTM.JSONResponseKeys.objectID] as? String ?? ""
         
         // Fill StudentModel Data
-        let firstName = dictionary[Parse_OTM.JSONResponseKeys.firstName]
-        let lastName = dictionary[Parse_OTM.JSONResponseKeys.lastName]
-        let uniqueKey = dictionary[Parse_OTM.JSONResponseKeys.uniqueKey]
-        let mediaURL = dictionary[Parse_OTM.JSONResponseKeys.mediaURL]
-        student = StudentModel(uniqueKey: uniqueKey as! String, firstName: firstName as! String, lastName: lastName as! String, mediaURL: mediaURL as! String)
+        let firstName = dictionary[Parse_OTM.JSONResponseKeys.firstName] as? String ?? ""
+        let lastName = dictionary[Parse_OTM.JSONResponseKeys.lastName] as? String ?? ""
+        let uniqueKey = dictionary[Parse_OTM.JSONResponseKeys.uniqueKey] as? String ?? ""
+        let mediaURL = dictionary[Parse_OTM.JSONResponseKeys.mediaURL] as? String ?? ""
+        student = StudentModel(uniqueKey: uniqueKey, firstName: firstName, lastName: lastName, mediaURL: mediaURL)
         
         // Fill LocationModel Data
-        let latitude = dictionary[Parse_OTM.JSONResponseKeys.latitude]
-        let longitude = dictionary[Parse_OTM.JSONResponseKeys.longitude]
+        let latitude = dictionary[Parse_OTM.JSONResponseKeys.latitude] as? Double ?? 0.0
+        let longitude = dictionary[Parse_OTM.JSONResponseKeys.longitude] as? Double ?? 0.0
         
         
-        let mapString = dictionary[Parse_OTM.JSONResponseKeys.mapString]
-        location = LocationModel(latitude: latitude as! Double, longitude: longitude as! Double, mapString: mapString as! String)
+        let mapString = dictionary[Parse_OTM.JSONResponseKeys.mapString] as? String ?? ""
+        location = LocationModel(latitude: latitude, longitude: longitude, mapString: mapString)
     }
     
     //Helper Methods

@@ -65,21 +65,21 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        let reuseId = "OTMPin"
+        let reuseId = "DropPin"
         
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        var dropPinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
-            pinView!.pinTintColor = UIColor.red
-            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        if dropPinView == nil {
+            dropPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            dropPinView!.canShowCallout = true
+            dropPinView!.pinTintColor = UIColor.red
+            dropPinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         else {
-            pinView!.annotation = annotation
+            dropPinView!.annotation = annotation
         }
         
-        return pinView
+        return dropPinView
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

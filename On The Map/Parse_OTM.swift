@@ -127,7 +127,7 @@ extension Parse_OTM {
     //MARK: APIMrthods
     
     struct APIMethod {
-        static let studentLocation = "StudentLocation"
+        static let studentLocation = "/StudentLocation"
     }
     
     //MARK: HeaderKeys
