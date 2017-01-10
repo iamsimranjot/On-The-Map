@@ -51,7 +51,10 @@ extension OTMTableViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: AppConstants.Identifiers.studentLocationCell) as! StudentLocationCell
+        let studentLocation = dataSource_otm.studentLocations[indexPath.row]
+        cell.configureStudentLocationCell(studentLocation: studentLocation)
+        return cell
     }
     
     //MARK: Table Delegates

@@ -10,15 +10,16 @@ import UIKit
 
 class StudentLocationCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    //MARK: Outlets
+    
+    @IBOutlet weak var pinImage: UIImageView!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var mediaURL: UILabel!
+    
+    func configureStudentLocationCell(studentLocation: StudentLocationModel){
+        pinImage.image = #imageLiteral(resourceName: "pin")
+        fullName.text = studentLocation.student.fullName
+        mediaURL.text = studentLocation.student.mediaURL
     }
 
 }
