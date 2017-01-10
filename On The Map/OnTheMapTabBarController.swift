@@ -28,6 +28,7 @@ class OnTheMapTabBarController: UITabBarController {
    //MARK: Actions
     
     @IBAction func logoutClicked(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConstants.notifications.loading), object: nil)
         udacity_otm.logout(){ (success, error) in
             if success == true {
                 DispatchQueue.main.async {
@@ -46,7 +47,7 @@ class OnTheMapTabBarController: UITabBarController {
     }
     
     @IBAction func refresh(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConstants.notifications.refreshCalled), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConstants.notifications.loading), object: nil)
         dataSource_otm.pinDownStudentsLocations()
     }
     

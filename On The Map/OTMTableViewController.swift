@@ -30,7 +30,9 @@ class OTMTableViewController: UITableViewController {
     
     func studentLocationsUpdated() {
         UIApplication.shared.endIgnoringInteractionEvents()
-        self.view.alpha = 1.0
+        DispatchQueue.main.async {
+            self.tableView.alpha = 1.0
+        }
         tableView.reloadData()
     }
     
@@ -41,14 +43,14 @@ class OTMTableViewController: UITableViewController {
     }
     
     func disableUI() {
-        self.view.alpha = 0.7
+        tableView.alpha = 0.7
         UIApplication.shared.beginIgnoringInteractionEvents()
     }
     
     func observe() {
         // Observe Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(disableUI), name: NSNotification.Name(rawValue: AppConstants.notifications.refreshCalled), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableUI), name: NSNotification.Name(rawValue: AppConstants.notifications.loading), object: nil)
     }
     
     //MARK: Table Data Source

@@ -47,6 +47,6 @@ struct AppConstants {
     struct notifications {
         static let studentLocationsPinnedDown = "Student Locations Pinned Down"
         static let studentLocationsPinnedDownError = "Student Locations Pinned Down Error"
-        static let refreshCalled = "refreshCalled"
+        static let loading = "Loading"
     }
 }
