@@ -94,6 +94,7 @@ class LoginViewController: UIViewController {
             
         case .Initialize:
             loginButton.layer.cornerRadius = 4.0
+            facebookLogin.layer.cornerRadius = 4.0
             passwordTextField.isSecureTextEntry = true
             errorLabel.text = ""
             facebookLogin.readPermissions = ["public_profile"]
