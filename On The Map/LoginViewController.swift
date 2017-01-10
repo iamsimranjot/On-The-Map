@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
                         self.udacity_otm.fetchStudentData(fromKey: userKey) { (student, error) in
                             DispatchQueue.main.async {
                                 if let _ = student {
-                                    self.performSegue(withIdentifier: AppConstants.segueIdentifiers.loginSegue, sender: self)
+                                    self.performSegue(withIdentifier: AppConstants.Identifiers.loginSegue, sender: self)
                                 } else {
                                     self.alertWithError(error: error!)
                                 }

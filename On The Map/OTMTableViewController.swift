@@ -22,6 +22,7 @@ class OTMTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        itemTableView.delegate = self
         
     }
 
@@ -29,5 +30,43 @@ class OTMTableViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func alertWithError(error: String) {
+        let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+}
 
+extension OTMTableViewController: UITableViewDataSource, UITableViewDelegate {
+ 
+    //MARK: Table Data Source
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource_otm.studentLocations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    //MARK: Table Delegates
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let studentURL = dataSource_otm.studentLocations[indexPath.row].student.mediaURL
+        
+        // Check if it exists & proceed accordingly
+        if let studentMediaURL = URL(string: studentURL), UIApplication.shared.canOpenURL(studentMediaURL) {
+            // Open URL
+            UIApplication.shared.open(studentMediaURL)
+        } else {
+            // Return with Error
+            alertWithError(error: AppConstants.Errors.cannotOpenURL)
+        }
+    }
+    
 }

@@ -14,8 +14,10 @@ struct AppConstants {
     
     //MARK: Segue Identifiers
     
-    struct segueIdentifiers {
+    struct Identifiers {
         static let loginSegue = "Login"
+        static let dropPinReuse = "DropPin"
+        static let studentLocationCell = "StudentLocationCell"
     }
     
     //MARK: Errors
