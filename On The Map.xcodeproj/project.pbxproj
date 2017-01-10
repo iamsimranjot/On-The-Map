@@ -44,7 +44,7 @@
 		705D92181E0EFC7400963A9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		705D921A1E0EFC7400963A9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		705D92221E0F17DE00963A9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "On The Map/SessionManager.swift"; sourceTree = "<group>"; };
 		91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_The_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,19 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				705D920E1E0EFC7400963A9B /* AppDelegate.swift */,
-				705D92221E0F17DE00963A9B /* LoginViewController.swift */,
 				701306861E1FBD40003AE838 /* AppConstants.swift */,
-				701306901E21305F003AE838 /* MapViewController.swift */,
-				701FBFDA1E243EA200468061 /* DataSource_OTM.swift */,
-				701306841E1F8FE5003AE838 /* OnTheMapTabBarController.swift */,
+				70703FAE1E24F34900726AFF /* NetworkManager */,
+				70703FAD1E24F2F800726AFF /* Models */,
+				70703FAF1E24F38C00726AFF /* ViewControllers */,
 				705D92211E0F01C200963A9B /* Assets */,
 				705D92201E0F01A200963A9B /* Supporting Files */,
-				705D92241E0FC0B300963A9B /* SessionManager.swift */,
-				7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */,
-				7013068E1E211BC7003AE838 /* StudentModel.swift */,
-				701306941E21B365003AE838 /* LocationModel.swift */,
-				701306961E21B3BC003AE838 /* StudentLocationModel.swift */,
-				7013068C1E1FCD69003AE838 /* Parse_OTM.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -124,6 +117,38 @@
 				705D92151E0EFC7400963A9B /* Assets.xcassets */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		70703FAD1E24F2F800726AFF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				701FBFDA1E243EA200468061 /* DataSource_OTM.swift */,
+				701306961E21B3BC003AE838 /* StudentLocationModel.swift */,
+				701306941E21B365003AE838 /* LocationModel.swift */,
+				7013068E1E211BC7003AE838 /* StudentModel.swift */,
+				7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */,
+				7013068C1E1FCD69003AE838 /* Parse_OTM.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		70703FAE1E24F34900726AFF /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				705D92241E0FC0B300963A9B /* SessionManager.swift */,
+			);
+			name = NetworkManager;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		70703FAF1E24F38C00726AFF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				705D92221E0F17DE00963A9B /* LoginViewController.swift */,
+				701306841E1F8FE5003AE838 /* OnTheMapTabBarController.swift */,
+				701306901E21305F003AE838 /* MapViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		84C467D6B70CAC3465F03E90 /* Frameworks */ = {
