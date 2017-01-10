@@ -34,6 +34,8 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        UIApplication.shared.endIgnoringInteractionEvents()
+        
         //Set UI State
         setUIForState(.Normal)
         
