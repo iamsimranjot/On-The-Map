@@ -15,6 +15,10 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    //MARK: Properties
+    
+    let dataSource_otm = DataSource_OTM.sharedDataSource_OTM()
+    
     //MARK: LifeCycle Methods
     
     override func viewDidLoad() {
@@ -23,8 +27,10 @@ class MapViewController: UIViewController {
         // Confirm MapView Delegate
         mapView.delegate = self
         
-        //Set Data Source for Pins
+        // Observe Notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
         
+        dataSource_otm.pinDownStudentsLocations()
     }
 
     //MARK: Cannot Open URL
@@ -33,6 +39,23 @@ class MapViewController: UIViewController {
         let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)
+    }
+    
+    func studentLocationsUpdated() {
+        var annotations = [MKPointAnnotation]()
+        
+        for studentLocation in dataSource_otm.studentLocations {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = studentLocation.location.coordinate
+            annotation.title = studentLocation.student.fullName
+            annotation.subtitle = studentLocation.student.mediaURL
+            annotations.append(annotation)
+        }
+        
+        DispatchQueue.main.async {
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.mapView.addAnnotations(annotations)
+        }
     }
 }
 
