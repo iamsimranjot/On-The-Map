@@ -8,11 +8,7 @@
 
 import UIKit
 
-class OTMTableViewController: UIViewController {
-    
-    //MARK: Outlets
-    
-    @IBOutlet weak var itemTableView: UITableView!
+class OTMTableViewController: UITableViewController {
     
     //MARK: Properties
     
@@ -22,8 +18,12 @@ class OTMTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemTableView.delegate = self
         
+        //Confirm TableView Delegate
+        tableView.delegate = self
+        
+        // Observe Notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,26 +31,27 @@ class OTMTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func studentLocationsUpdated() {
+        tableView.reloadData()
+    }
+    
     func alertWithError(error: String) {
         let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)
     }
-}
-
-extension OTMTableViewController: UITableViewDataSource, UITableViewDelegate {
- 
+    
     //MARK: Table Data Source
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource_otm.studentLocations.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AppConstants.Identifiers.studentLocationCell) as! StudentLocationCell
         let studentLocation = dataSource_otm.studentLocations[indexPath.row]
         cell.configureStudentLocationCell(studentLocation: studentLocation)
@@ -59,7 +60,7 @@ extension OTMTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Table Delegates
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let studentURL = dataSource_otm.studentLocations[indexPath.row].student.mediaURL
         
         // Check if it exists & proceed accordingly
