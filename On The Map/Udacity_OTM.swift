@@ -59,7 +59,7 @@ class Udacity_OTM {
     
     //MARK: Login through Udacity's Username & Password
     
-    func loginWithCredentials(username: String, password: String, responseClosure: @escaping (_ userKey: String?, _
+    func loginWithCredentials(username: String, password: String, facebookToken: String? = nil, responseClosure: @escaping (_ userKey: String?, _
         error: String?) -> Void){
         
         // Set Login URL
@@ -67,7 +67,15 @@ class Udacity_OTM {
         
         // Set HTTP Body
         var loginBody = [String : Any]()
-        loginBody[HTTPBodyKeys.udacity] = [HTTPBodyKeys.username: username, HTTPBodyKeys.password: password]
+        
+        // Check if Login is by Facebook
+        if let facebookToken = facebookToken {
+            loginBody["facebook_mobile"] = [
+                "access_token": facebookToken
+            ]
+        } else {
+          loginBody[HTTPBodyKeys.udacity] = [HTTPBodyKeys.username: username, HTTPBodyKeys.password: password]  
+        }
         
         // Make request
         makeRequestToUdacity(url: loginURL, method: .POST, body: loginBody as [String : AnyObject]?) {(jsonResponseDictionary, error) in
@@ -91,6 +99,13 @@ class Udacity_OTM {
             
             responseClosure(nil, Errors.loginError)
         }
+    }
+    
+    //MARK: Facebook Login
+    
+    func loginWithFacebook(token: String, responseClosure: @escaping (_ userKey: String?, _ error: String?) -> Void) {
+        
+        loginWithCredentials(username: "", password:  "", facebookToken: token, responseClosure: responseClosure)
     }
     
     //MARK: Fetch Student Data through key

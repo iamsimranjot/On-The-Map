@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
     //MARK: UI Configuration Enum
-    private enum UIElementState { case Initialize, Normal, Login }
+    enum UIElementState { case Initialize, Normal, Login, LoginFb }
     
     //MARK: Outlets & Properties
     
@@ -21,12 +22,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var facebookLogin: FBSDKLoginButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private let udacity_otm = Udacity_OTM.sharedInstance()
+    let udacity_otm = Udacity_OTM.sharedInstance()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FBSDKLoginManager().logOut()
         setUIForState(.Initialize)
         // Do any additional setup after loading the view.
     }
@@ -86,13 +89,15 @@ class LoginViewController: UIViewController {
     
     //MARK: Helper Methods
     
-    private func setUIForState(_ state: UIElementState) {
+    func setUIForState(_ state: UIElementState) {
         switch state {
             
         case .Initialize:
             loginButton.layer.cornerRadius = 4.0
             passwordTextField.isSecureTextEntry = true
             errorLabel.text = ""
+            facebookLogin.readPermissions = ["public_profile"]
+            facebookLogin.delegate = self
             
         case .Normal:
             setEnabled(enabled: true)
@@ -106,6 +111,13 @@ class LoginViewController: UIViewController {
             activityIndicator.startAnimating()
             contentStackView.alpha = 0.5
             errorLabel.text = ""
+            
+        case .LoginFb:
+            setEnabled(enabled: false)
+            activityIndicator.startAnimating()
+            contentStackView.alpha = 0.5
+            emailTextField.text = ""
+            passwordTextField.text = ""
         }
     }
     
@@ -114,6 +126,7 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = enabled
         emailTextField.isEnabled = enabled
         passwordTextField.isEnabled = enabled
+        facebookLogin.isEnabled = enabled
     }
     
     private func throwError(){
@@ -139,13 +152,15 @@ class LoginViewController: UIViewController {
         }
     }
         
-    private func alertWithError(error: String) {
+     func alertWithError(error: String) {
         setUIForState(.Normal)
         let alertView = UIAlertController(title: AppConstants.Alert.LoginAlertTitle, message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)
     }
 }
+
+//MARK: UITextField Delegate Extension
 
 extension LoginViewController: UITextFieldDelegate {
     
@@ -155,3 +170,55 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
 }
+
+//MARK: Facebook Login Extension
+
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        if FBSDKAccessToken.current() == nil {
+            setUIForState(.LoginFb)
+        }
+        return true
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        func displayError(error: String) {
+            FBSDKLoginManager().logOut()
+            setUIForState(.Normal)
+            let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
+            self.present(alertView, animated: true, completion: nil)
+        }
+        
+        setUIForState(.LoginFb)
+        
+        if let token = result.token.tokenString {
+            udacity_otm.loginWithFacebook(token: token) { (userKey, error) in
+                DispatchQueue.main.async {
+                    if let userKey = userKey {
+                        self.udacity_otm.fetchStudentData(fromKey: userKey) { (student, error) in
+                            DispatchQueue.main.async {
+                                if let _ = student {
+                                    self.performSegue(withIdentifier: AppConstants.Identifiers.loginSegue, sender: self)
+                                } else {
+                                    self.alertWithError(error: error!)
+                                }
+                            }
+                        }
+                    } else {
+                        displayError(error: error!)
+                    }
+                }
+            }
+        } else {
+            displayError(error: error!.localizedDescription)
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        setUIForState(.Normal)
+    }
+}
+

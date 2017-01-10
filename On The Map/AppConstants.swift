@@ -49,4 +49,10 @@ struct AppConstants {
         static let studentLocationsPinnedDownError = "Student Locations Pinned Down Error"
         static let loading = "Loading"
     }
+    
+    struct facebookLogin {
+        static let AppID = "365362206864879"
+        static let URLSuffix = "onthemap"
+        static let URLScheme = "fb\(AppID)\(URLSuffix)"
+    }
 }

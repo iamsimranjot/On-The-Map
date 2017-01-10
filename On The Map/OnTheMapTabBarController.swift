@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class OnTheMapTabBarController: UITabBarController {
     
@@ -32,6 +33,7 @@ class OnTheMapTabBarController: UITabBarController {
         udacity_otm.logout(){ (success, error) in
             if success == true {
                 DispatchQueue.main.async {
+                    FBSDKLoginManager().logOut()
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {

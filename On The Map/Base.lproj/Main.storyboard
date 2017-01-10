@@ -79,7 +79,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5F-Gn-Isb">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5F-Gn-Isb" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="0.0" y="567" width="343" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -112,6 +112,7 @@
                         <outlet property="contentStackView" destination="t3T-v8-mMB" id="xPe-nM-mnt"/>
                         <outlet property="emailTextField" destination="FWp-VT-Eqp" id="jqx-Ks-3qW"/>
                         <outlet property="errorLabel" destination="Eu2-U2-JDk" id="2Me-5c-ib1"/>
+                        <outlet property="facebookLogin" destination="V5F-Gn-Isb" id="YI9-IJ-GHE"/>
                         <outlet property="loginButton" destination="vrN-v5-c1u" id="scB-xw-T5Y"/>
                         <outlet property="passwordTextField" destination="c2f-CH-9T2" id="fdu-Kb-kDz"/>
                         <outlet property="signupButton" destination="btQ-Ts-L50" id="oDE-If-mro"/>
