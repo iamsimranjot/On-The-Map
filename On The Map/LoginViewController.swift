@@ -26,10 +26,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let udacity_otm = Udacity_OTM.sharedInstance()
+    let facebook_otm = Facebook_OTM.sharedManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        FBSDKLoginManager().logOut()
+        facebook_otm.logout()
         setUIForState(.Initialize)
         // Do any additional setup after loading the view.
     }
@@ -177,7 +178,7 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: FBSDKLoginButtonDelegate {
     
     func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
-        if FBSDKAccessToken.current() == nil {
+        if facebook_otm.currentAccessToken() == nil {
             setUIForState(.LoginFb)
         }
         return true
@@ -186,7 +187,7 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
         func displayError(error: String) {
-            FBSDKLoginManager().logOut()
+            facebook_otm.logout()
             setUIForState(.Normal)
             let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
             alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))

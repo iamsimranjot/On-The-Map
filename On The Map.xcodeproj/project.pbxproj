@@ -24,6 +24,7 @@
 		705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92241E0FC0B300963A9B /* SessionManager.swift */; };
 		70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70703FB01E25018300726AFF /* OTMTableViewController.swift */; };
 		70E737491E250C7C00E85A0B /* StudentLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E737481E250C7C00E85A0B /* StudentLocationCell.swift */; };
+		70EA6D2D1E25E77A00D515F6 /* Facebook_OTM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA6D2C1E25E77A00D515F6 /* Facebook_OTM.swift */; };
 		F28F5C8802A90CEDC0506899 /* Pods_On_The_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "On The Map/SessionManager.swift"; sourceTree = "<group>"; };
 		70703FB01E25018300726AFF /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
 		70E737481E250C7C00E85A0B /* StudentLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationCell.swift; sourceTree = "<group>"; };
+		70EA6D2C1E25E77A00D515F6 /* Facebook_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook_OTM.swift; sourceTree = "<group>"; };
 		91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_The_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				705D92241E0FC0B300963A9B /* SessionManager.swift */,
 				7013068A1E1FCCEA003AE838 /* Udacity_OTM.swift */,
 				7013068C1E1FCD69003AE838 /* Parse_OTM.swift */,
+				70EA6D2C1E25E77A00D515F6 /* Facebook_OTM.swift */,
 			);
 			name = NetworkManager;
 			path = ..;
@@ -305,6 +308,7 @@
 				701306911E21305F003AE838 /* MapViewController.swift in Sources */,
 				701FBFDB1E243EA200468061 /* DataSource_OTM.swift in Sources */,
 				70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */,
+				70EA6D2D1E25E77A00D515F6 /* Facebook_OTM.swift in Sources */,
 				705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */,
 				70E737491E250C7C00E85A0B /* StudentLocationCell.swift in Sources */,
 				7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */,
