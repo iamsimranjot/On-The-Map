@@ -8,5 +8,6 @@ target 'On The Map' do
   # Pods for On The Map
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
 
 end

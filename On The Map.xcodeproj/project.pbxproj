@@ -214,6 +214,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = VNF3AND99V;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
