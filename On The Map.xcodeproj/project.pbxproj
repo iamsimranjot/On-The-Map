@@ -23,6 +23,7 @@
 		705D92231E0F17DE00963A9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92221E0F17DE00963A9B /* LoginViewController.swift */; };
 		705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705D92241E0FC0B300963A9B /* SessionManager.swift */; };
 		70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70703FB01E25018300726AFF /* OTMTableViewController.swift */; };
+		70B9A6861E2A0A15008A5CDC /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B9A6851E2A0A15008A5CDC /* PostingViewController.swift */; };
 		70E737491E250C7C00E85A0B /* StudentLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E737481E250C7C00E85A0B /* StudentLocationCell.swift */; };
 		70EA6D2D1E25E77A00D515F6 /* Facebook_OTM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA6D2C1E25E77A00D515F6 /* Facebook_OTM.swift */; };
 		F28F5C8802A90CEDC0506899 /* Pods_On_The_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */; };
@@ -49,6 +50,7 @@
 		705D92221E0F17DE00963A9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "On The Map/SessionManager.swift"; sourceTree = "<group>"; };
 		70703FB01E25018300726AFF /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
+		70B9A6851E2A0A15008A5CDC /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 		70E737481E250C7C00E85A0B /* StudentLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationCell.swift; sourceTree = "<group>"; };
 		70EA6D2C1E25E77A00D515F6 /* Facebook_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook_OTM.swift; sourceTree = "<group>"; };
 		91917CFA356D33C6B614D76B /* Pods_On_The_Map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_The_Map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +158,7 @@
 				701306841E1F8FE5003AE838 /* OnTheMapTabBarController.swift */,
 				701306901E21305F003AE838 /* MapViewController.swift */,
 				70703FB01E25018300726AFF /* OTMTableViewController.swift */,
+				70B9A6851E2A0A15008A5CDC /* PostingViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				70703FB11E25018300726AFF /* OTMTableViewController.swift in Sources */,
 				70EA6D2D1E25E77A00D515F6 /* Facebook_OTM.swift in Sources */,
 				705D92251E0FC0B300963A9B /* SessionManager.swift in Sources */,
+				70B9A6861E2A0A15008A5CDC /* PostingViewController.swift in Sources */,
 				70E737491E250C7C00E85A0B /* StudentLocationCell.swift in Sources */,
 				7013068F1E211BC8003AE838 /* StudentModel.swift in Sources */,
 				701306871E1FBD40003AE838 /* AppConstants.swift in Sources */,
@@ -364,6 +368,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -414,6 +419,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
