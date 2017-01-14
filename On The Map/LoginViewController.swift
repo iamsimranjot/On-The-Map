@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
     
     let udacity_otm = Udacity_OTM.sharedInstance()
     let facebook_otm = Facebook_OTM.sharedManager()
+    let dataSource_otm = DataSource_OTM.sharedDataSource_OTM()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +67,8 @@ class LoginViewController: UIViewController {
                     if let userKey = userKey {
                         self.udacity_otm.fetchStudentData(fromKey: userKey) { (student, error) in
                             DispatchQueue.main.async {
-                                if let _ = student {
+                                if let student = student {
+                                    self.dataSource_otm.studentUser = student
                                     self.performSegue(withIdentifier: AppConstants.Identifiers.loginSegue, sender: self)
                                 } else {
                                     self.alertWithError(error: error!)
@@ -202,7 +204,8 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
                     if let userKey = userKey {
                         self.udacity_otm.fetchStudentData(fromKey: userKey) { (student, error) in
                             DispatchQueue.main.async {
-                                if let _ = student {
+                                if let student = student {
+                                    self.dataSource_otm.studentUser = student
                                     self.performSegue(withIdentifier: AppConstants.Identifiers.loginSegue, sender: self)
                                 } else {
                                     self.alertWithError(error: error!)
