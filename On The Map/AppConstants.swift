@@ -12,12 +12,13 @@ import UIKit
 
 struct AppConstants {
     
-    //MARK: Segue Identifiers
+    //MARK: Identifiers
     
     struct Identifiers {
         static let loginSegue = "Login"
         static let dropPinReuse = "DropPin"
         static let studentLocationCell = "StudentLocationCell"
+        static let postingSegue = "presentPostingVC"
     }
     
     //MARK: Errors

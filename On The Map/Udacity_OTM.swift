@@ -89,6 +89,7 @@ class Udacity_OTM {
             // Check for known error case
             if let jsonResponseDictionary = jsonResponseDictionary, let _ = jsonResponseDictionary[JSONResponseKeys.status] as? Int, let error = jsonResponseDictionary[JSONResponseKeys.error] as? String {
                 responseClosure(nil, error)
+                return
             }
             
             // Unwrap the Json Dictionary
