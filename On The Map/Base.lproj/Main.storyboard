@@ -217,11 +217,18 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wja-6C-AAQ">
+                                                <rect key="frame" x="328" y="10" width="42" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Cancel"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="cqA-UE-rYe" secondAttribute="trailing" constant="10" id="8qy-J8-igu"/>
                                             <constraint firstItem="cqA-UE-rYe" firstAttribute="centerY" secondItem="22F-RF-qRI" secondAttribute="centerY" id="Iqf-bb-dMa"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wja-6C-AAQ" secondAttribute="trailing" constant="5" id="L4s-tB-Vfa"/>
+                                            <constraint firstItem="Wja-6C-AAQ" firstAttribute="top" secondItem="22F-RF-qRI" secondAttribute="top" constant="10" id="SqQ-Me-6PJ"/>
                                             <constraint firstAttribute="trailing" secondItem="lyV-FI-ii4" secondAttribute="trailing" constant="80" id="Ur9-wO-AyH"/>
                                             <constraint firstItem="cqA-UE-rYe" firstAttribute="leading" secondItem="22F-RF-qRI" secondAttribute="leading" constant="10" id="VXN-Zb-rnF"/>
                                             <constraint firstItem="lyV-FI-ii4" firstAttribute="top" secondItem="22F-RF-qRI" secondAttribute="top" constant="-10" id="XfG-iR-AJs"/>
@@ -324,6 +331,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="9p5-Qv-KeL" id="tYM-j6-EM7"/>
                         <outlet property="bottomSection" destination="tVj-WY-91v" id="RnE-Dr-3XI"/>
+                        <outlet property="cancelButton" destination="Wja-6C-AAQ" id="yIN-2o-SXA"/>
                         <outlet property="findButton" destination="xS1-3d-AGt" id="vdc-AW-VDP"/>
                         <outlet property="locationTextField" destination="pYM-oT-cHw" id="ip0-YE-U7i"/>
                         <outlet property="mapKitView" destination="jjX-ag-r67" id="gRE-a8-45p"/>
