@@ -46,6 +46,19 @@ class OnTheMapTabBarController: UITabBarController {
     }
     
     @IBAction func addPin(_ sender: Any) {
+        if let currentStudent = dataSource_otm.studentUser {
+            parse_otm.getParticularStudentLocation(uniqueKey: currentStudent.uniqueKey) { (location, error) in
+                DispatchQueue.main.async {
+                    if let location = location {
+                        self.overwriteAlert() { (alert) in
+                            self.presentPostingVC(objectId: location.objectID)
+                        }
+                    } else {
+                        self.presentPostingVC()
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func refresh(_ sender: Any) {
@@ -55,9 +68,26 @@ class OnTheMapTabBarController: UITabBarController {
     
     //MARK: Helper Methods
     
+    private func presentPostingVC (objectId: String? = nil){
+        performSegue(withIdentifier: AppConstants.Identifiers.postingSegue, sender: objectId)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? PostingViewController {
+            destination.objectId = sender as! String?
+        }
+    }
+    
     private func alertWithError(error: String, title: String) {
         let alertView = UIAlertController(title: title, message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
+    private func overwriteAlert(completionClosure: @escaping (UIAlertAction) -> Void){
+        let alertView = UIAlertController(title: AppConstants.Alert.overWriteAlert, message: AppConstants.Alert.overWriteMessage, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.cancel, style: .cancel, handler: nil))
+        alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.overWrite, style: .default, handler: completionClosure))
         self.present(alertView, animated: true, completion: nil)
     }
     

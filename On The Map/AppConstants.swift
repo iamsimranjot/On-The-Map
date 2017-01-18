@@ -28,6 +28,12 @@ struct AppConstants {
         static let passwordEmpty = "Please provide the password."
         static let cannotOpenURL = "Cannot Open URL"
         static let unableToUpdateLocations = "Unable to update and pin down student locations."
+        static let emptyurl = " You must enter a URL."
+        static let studentPlacemarkEmpty = "Student and placemark not initialized."
+        static let emptyLocation = "Must enter a Location."
+        static let couldNotGeocode = "Could not geocode the string."
+        static let noLocationFound = "No location found."
+        static let postingFailed = "Student location could not be posted."
     }
     
     //MARK: Alerts
@@ -35,12 +41,16 @@ struct AppConstants {
     struct Alert {
         static let LoginAlertTitle = "Login Error"
         static let LogoutAlertTitle = "Logout Error"
+        static let overWriteAlert = "Overwrite Location?"
+        static let overWriteMessage = "You've already posted a pin. Would you like to overwrite it?"
     }
     
     //MARK: Alert Actions
     
     struct AlertActions {
         static let dismiss = "Dismiss"
+        static let overWrite = "Overwrite"
+        static let cancel = "Cancel"
     }
     
     //MARK: Notifications Names

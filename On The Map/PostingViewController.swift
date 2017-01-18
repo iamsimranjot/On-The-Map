@@ -34,35 +34,109 @@ class PostingViewController: UIViewController {
     
     private let dataSource_otm = DataSource_OTM.sharedDataSource_OTM()
     private let parse_otm = Parse_OTM.sharedInstance()
+    var objectId: String? = nil
     private var mark: CLPlacemark? = nil
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setUpInitialUI
     }
+    
+    //MARK: Top Section
+    
+    @IBAction func cancelClicked(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Middle Section
+    
+    
+    //MARK: Bottom Section
+    
+    @IBAction func submitClicked(_ sender: AnyObject) {
+        
+    }
+    
+    @IBAction func findClicked(_ sender: AnyObject) {
+        
+        // Check if location textfield is empty or not.
+        if (locationTextField.text?.isEmpty)! {
+            showAlert(message: AppConstants.Errors.emptyLocation)
+            return
+        }
+        
+        // Set loading view
+        setLoadingView()
+        
+        //Add the placemark on the location
+    }
+    
+    //MARK: Helper Methods
     
     private func configureUI(_ state: UIState, location: CLLocationCoordinate2D? = nil) {
         switch state {
         case .Find:
-            topSectionLabelView.isHidden = false
-            mapKitView.isHidden = true
-            mediaURLTextField.isHidden = true
-            middleSection.backgroundColor = UIColor.black //to be done
-            bottomSection.isOpaque = false
-            locationTextField.isHidden = false
-            findButton.isHidden = false
-            submitButton.isHidden = true
+            setHiddenElements(false)
+            middleSection.backgroundColor = UIColor.cyan //to be done
         case .Submit:
-            topSectionLabelView.isHidden = true
-            mapKitView.isHidden = false
-            mediaURLTextField.isHidden = false
+            setHiddenElements(true)
             middleSection.backgroundColor = UIColor.clear
-            bottomSection.isOpaque = true
-            locationTextField.isHidden = true
-            findButton.isHidden = true
-            submitButton.isHidden = false
+        }
+    }
+    
+    
+    private func setLoadingView() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        enableUI(false)
+        setAlphaForUI(0.5)
+    }
+    
+    private func unSetLoadingView() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+        enableUI(true)
+        setAlphaForUI(1.0)
+    }
+    
+    private func enableUI(_ enable: Bool) {
+        findButton.isEnabled = enable
+        cancelButton.isEnabled = enable
+        locationTextField.isEnabled = enable
+        //top section label to be done
+    }
+    
+    private func setAlphaForUI(_ alpha: CGFloat) {
+        findButton.alpha = alpha
+        cancelButton.alpha = alpha
+        locationTextField.alpha = alpha
+    }
+    
+    private func setUpInitialUI() {
+        locationTextField.delegate = self
+        mediaURLTextField.delegate = self
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+    
+    private func setHiddenElements(_ hidden: Bool) {
+        topSectionLabelView.isHidden = hidden
+        mapKitView.isHidden = !hidden
+        mediaURLTextField.isHidden = !hidden
+        bottomSection.isOpaque = hidden
+        locationTextField.isHidden = hidden
+        findButton.isHidden = hidden
+        submitButton.isHidden = !hidden
+    }
+    
+    private func showAlert(message: String, completionClosure: ((UIAlertAction) -> Void)? = nil) {
+        DispatchQueue.main.async {
+            //self.stopActivity()
+            let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .default, handler: completionClosure))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
