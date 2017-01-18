@@ -41,7 +41,7 @@ class PostingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpInitialUI
+        setUpInitialUI()
     }
     
     //MARK: Top Section
