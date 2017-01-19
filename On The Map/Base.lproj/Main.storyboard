@@ -190,16 +190,17 @@
                                                 <constraints>
                                                     <constraint firstItem="fqT-f7-y9o" firstAttribute="leading" secondItem="lyV-FI-ii4" secondAttribute="leading" constant="20" id="Aag-kj-d7u"/>
                                                     <constraint firstAttribute="trailing" secondItem="fqT-f7-y9o" secondAttribute="trailing" constant="20" id="HaC-Vj-ZoZ"/>
-                                                    <constraint firstItem="fqT-f7-y9o" firstAttribute="top" secondItem="lyV-FI-ii4" secondAttribute="top" constant="30" id="va0-9V-8Vj"/>
+                                                    <constraint firstItem="fqT-f7-y9o" firstAttribute="top" secondItem="lyV-FI-ii4" secondAttribute="top" constant="50" id="va0-9V-8Vj"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Media URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cqA-UE-rYe">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wja-6C-AAQ">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="Cancel"/>
                                                 <connections>
                                                     <action selector="cancelClicked:" destination="V8n-t4-6b9" eventType="touchUpInside" id="oNe-SJ-RwH"/>
@@ -211,24 +212,27 @@
                                             <constraint firstAttribute="trailing" secondItem="cqA-UE-rYe" secondAttribute="trailing" constant="10" id="8qy-J8-igu"/>
                                             <constraint firstItem="cqA-UE-rYe" firstAttribute="centerY" secondItem="22F-RF-qRI" secondAttribute="centerY" id="Iqf-bb-dMa"/>
                                             <constraint firstAttribute="trailing" secondItem="Wja-6C-AAQ" secondAttribute="trailing" constant="10" id="L4s-tB-Vfa"/>
-                                            <constraint firstItem="Wja-6C-AAQ" firstAttribute="top" secondItem="22F-RF-qRI" secondAttribute="top" constant="10" id="SqQ-Me-6PJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="lyV-FI-ii4" secondAttribute="trailing" constant="70" id="Ur9-wO-AyH"/>
+                                            <constraint firstItem="Wja-6C-AAQ" firstAttribute="top" secondItem="22F-RF-qRI" secondAttribute="top" constant="5" id="SqQ-Me-6PJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="lyV-FI-ii4" secondAttribute="trailing" constant="10" id="Ur9-wO-AyH"/>
                                             <constraint firstItem="cqA-UE-rYe" firstAttribute="leading" secondItem="22F-RF-qRI" secondAttribute="leading" constant="10" id="VXN-Zb-rnF"/>
                                             <constraint firstItem="lyV-FI-ii4" firstAttribute="top" secondItem="22F-RF-qRI" secondAttribute="top" constant="-10" id="XfG-iR-AJs"/>
-                                            <constraint firstItem="lyV-FI-ii4" firstAttribute="leading" secondItem="22F-RF-qRI" secondAttribute="leading" constant="70" id="bAv-UQ-9AO"/>
+                                            <constraint firstItem="lyV-FI-ii4" firstAttribute="leading" secondItem="22F-RF-qRI" secondAttribute="leading" constant="10" id="bAv-UQ-9AO"/>
                                             <constraint firstAttribute="bottom" secondItem="lyV-FI-ii4" secondAttribute="bottom" constant="9.5" id="zfy-rB-w1C"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIz-lc-qyC" userLabel="Middle Section">
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pYM-oT-cHw">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjX-ag-r67" userLabel="Map View">
                                                 <subviews>
-                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9KQ-Nr-Eab"/>
+                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9KQ-Nr-Eab">
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </mapView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>

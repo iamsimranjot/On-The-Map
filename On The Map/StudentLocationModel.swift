@@ -33,6 +33,18 @@ struct StudentLocationModel {
         location = LocationModel(latitude: latitude, longitude: longitude, mapString: mapString)
     }
     
+    init(student: StudentModel, location: LocationModel) {
+        objectID = ""
+        self.student = student
+        self.location = location
+    }
+    
+    init(objectID: String, student: StudentModel, location: LocationModel) {
+        self.objectID = objectID
+        self.student = student
+        self.location = location
+    }
+    
     //Helper Methods
     static func locationsFromDictionaries(dictionaries: [[String:AnyObject]]) -> [StudentLocationModel] {
         var studentLocations = [StudentLocationModel]()

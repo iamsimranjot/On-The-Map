@@ -38,9 +38,6 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        UIApplication.shared.endIgnoringInteractionEvents()
-        
         //Set UI State
         setUIForState(.Normal)
         
@@ -104,6 +101,7 @@ class LoginViewController: UIViewController {
             facebookLogin.delegate = self
             
         case .Normal:
+            UIApplication.shared.endIgnoringInteractionEvents()
             setEnabled(enabled: true)
             emailTextField.text = ""
             passwordTextField.text = ""

@@ -25,6 +25,13 @@ class OnTheMapTabBarController: UITabBarController {
         // Observe Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsPinnedDownError), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDownError), object: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Set UI Aplha
+        self.view.alpha = 1.0
+    }
 
    //MARK: Actions
     
@@ -34,6 +41,7 @@ class OnTheMapTabBarController: UITabBarController {
             if success == true {
                 DispatchQueue.main.async {
                     FBSDKLoginManager().logOut()
+                    self.unsetView()
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
@@ -46,9 +54,12 @@ class OnTheMapTabBarController: UITabBarController {
     }
     
     @IBAction func addPin(_ sender: Any) {
+        
+        setView()
         if let currentStudent = dataSource_otm.studentUser {
             parse_otm.getParticularStudentLocation(uniqueKey: currentStudent.uniqueKey) { (location, error) in
                 DispatchQueue.main.async {
+                    self.unsetView()
                     if let location = location {
                         self.overwriteAlert() { (alert) in
                             self.presentPostingVC(objectId: location.objectID)
@@ -68,6 +79,16 @@ class OnTheMapTabBarController: UITabBarController {
     
     //MARK: Helper Methods
     
+    private func setView() {
+        self.view.alpha = 0.7
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    private func unsetView() {
+        self.view.alpha = 1.0
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
     private func presentPostingVC (objectId: String? = nil){
         performSegue(withIdentifier: AppConstants.Identifiers.postingSegue, sender: objectId)
     }
@@ -85,6 +106,8 @@ class OnTheMapTabBarController: UITabBarController {
     }
     
     private func overwriteAlert(completionClosure: @escaping (UIAlertAction) -> Void){
+        
+        unsetView()
         let alertView = UIAlertController(title: AppConstants.Alert.overWriteAlert, message: AppConstants.Alert.overWriteMessage, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.cancel, style: .cancel, handler: nil))
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.overWrite, style: .default, handler: completionClosure))

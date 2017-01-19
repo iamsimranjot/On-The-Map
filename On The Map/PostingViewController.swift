@@ -51,13 +51,49 @@ class PostingViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Middle Section
-    
-    
     //MARK: Bottom Section
     
     @IBAction func submitClicked(_ sender: AnyObject) {
         
+        // check for empty media url
+        if mediaURLTextField.text!.isEmpty {
+            showAlert(message: AppConstants.Errors.emptyurl)
+            return
+        }
+        
+        // Set loading view
+        setLoadingView()
+        
+        // Post the request to parse api
+        let location = LocationModel(latitude: (mark?.location?.coordinate.latitude)!, longitude: (mark?.location?.coordinate.longitude)!, mapString: mediaURLTextField.text!)
+        let mediaURL = mediaURLTextField.text!
+        
+        if let objectId = objectId {
+            parse_otm.updateStudentLocationWith(objectID: objectId, mediaURL: mediaURL, studentData: StudentLocationModel(objectID: objectId, student: dataSource_otm.studentUser!, location: location)) { (success, error) in
+                
+                if let _ = error {
+                    self.showAlert(message: AppConstants.Errors.postingFailed) { (alert) in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                } else {
+                    self.dataSource_otm.studentUser?.mediaURL = mediaURL
+                    self.dataSource_otm.pinDownStudentsLocations()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        } else {
+            parse_otm.postStudentsLocation(studentData: StudentLocationModel(student: dataSource_otm.studentUser!, location: location), mediaURL: mediaURL) { (success, error) in
+                if let _ = error {
+                    self.showAlert(message: AppConstants.Errors.postingFailed) { (alert) in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                } else {
+                    self.dataSource_otm.studentUser?.mediaURL = mediaURL
+                    self.dataSource_otm.pinDownStudentsLocations()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @IBAction func findClicked(_ sender: AnyObject) {
@@ -96,12 +132,27 @@ class PostingViewController: UIViewController {
         case .Find:
             setHiddenElements(false)
             middleSection.backgroundColor = UIColor(hex: 0x3b5998)
+            bottomSection.backgroundColor = UIColor(hex: 0x3b5998)
+            cancelButton.setTitleColor(UIColor(hex: 0x007AFF), for: .normal)
+            findButton.setTitleColor(UIColor.white, for: .normal)
+            locationTextField.layer.borderColor = UIColor(hex: 0x3b5998).cgColor
+            mediaURLTextField.layer.borderColor = UIColor(hex: 0x3b5998).cgColor
+            
         case .Submit:
             setHiddenElements(true)
             topSection.backgroundColor = UIColor(hex: 0x3b5998)
             middleSection.backgroundColor = UIColor.clear
+            findButton.setTitleColor(UIColor(hex: 0x007AFF), for: .normal)
+            submitButton.setTitleColor(UIColor.white, for: .normal)
+            cancelButton.setTitleColor(UIColor.white, for: .normal)
         }
     }
+    
+    /*private func dropShadows(inView: UIView) {
+        let shadowPath = UIBezierPath(rect: inView.bounds)
+        inView.layer.masksToBounds = false
+        
+    }*/
     
     
     private func setLoadingView() {

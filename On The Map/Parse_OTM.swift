@@ -150,6 +150,44 @@ class Parse_OTM {
         }
     }
     
+    //MARK: Update Location
+    
+    func updateStudentLocationWith(objectID: String, mediaURL: String, studentData: StudentLocationModel, responseClosure: @escaping (_ success: Bool, _ error: String?) -> Void) {
+        
+        // Make URL
+        let url = sessionObject.urlForRequest(apiMethod: APIMethod.studentLocation, pathExtension: "/\(objectID)")
+        
+        // Set Json Body
+        let requestBody: [String : AnyObject] = [StudentLocationKeys.uniqueKey: studentData.student.uniqueKey as AnyObject,
+                                                 StudentLocationKeys.firstName: studentData.student.firstName as AnyObject,
+                                                 StudentLocationKeys.lastName: studentData.student.lastName as AnyObject,
+                                                 StudentLocationKeys.mapString: studentData.location.mapString as AnyObject,
+                                                 StudentLocationKeys.mediaURL: mediaURL as AnyObject,
+                                                 StudentLocationKeys.latitude: studentData.location.latitude as AnyObject,
+                                                 StudentLocationKeys.longitude: studentData.location.longitude as AnyObject]
+        // Make request
+        makeRequestToParse(url: url, method: .PUT, body: requestBody) { (jsonAsDictionary , error) in
+            
+            // Check for error
+            guard error == nil else {
+                responseClosure(false, error)
+                return
+            }
+            
+            // Handle known error
+            if let jsonResponseDic = jsonAsDictionary, let error = jsonResponseDic[JSONResponseKeys.error] {
+                responseClosure(false, error as? String)
+                return
+            }
+            
+            if let jsonResponseDic = jsonAsDictionary, let _ = jsonResponseDic[JSONResponseKeys.updatedAt] {
+                responseClosure(true, nil)
+                return
+            }
+            
+            responseClosure(false, error)
+        }
+    }
 }
 
 //MARK: Constants Extension
