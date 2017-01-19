@@ -42,6 +42,7 @@ class PostingViewController: UIViewController {
         super.viewDidLoad()
         
         setUpInitialUI()
+        configureUI(.Find)
     }
     
     //MARK: Top Section
@@ -71,6 +72,21 @@ class PostingViewController: UIViewController {
         setLoadingView()
         
         //Add the placemark on the location
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(locationTextField.text!) { (placemarkArr, error) in
+            
+            //Check for errors
+            if let _ = error {
+                self.showAlert(message: AppConstants.Errors.couldNotGeocode)
+            } else if (placemarkArr?.isEmpty)! {
+                self.showAlert(message: AppConstants.Errors.noLocationFound)
+            } else {
+                self.mark = placemarkArr?.first
+                self.configureUI(.Submit)
+                self.unSetLoadingView()
+                self.mapView.showAnnotations([MKPlacemark(placemark: self.mark!)], animated: true)
+            }
+        }
     }
     
     //MARK: Helper Methods
@@ -79,9 +95,10 @@ class PostingViewController: UIViewController {
         switch state {
         case .Find:
             setHiddenElements(false)
-            middleSection.backgroundColor = UIColor.cyan //to be done
+            middleSection.backgroundColor = UIColor(hex: 0x3b5998)
         case .Submit:
             setHiddenElements(true)
+            topSection.backgroundColor = UIColor(hex: 0x3b5998)
             middleSection.backgroundColor = UIColor.clear
         }
     }
@@ -133,7 +150,7 @@ class PostingViewController: UIViewController {
     
     private func showAlert(message: String, completionClosure: ((UIAlertAction) -> Void)? = nil) {
         DispatchQueue.main.async {
-            //self.stopActivity()
+            self.unSetLoadingView()
             let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .default, handler: completionClosure))
             self.present(alert, animated: true, completion: nil)

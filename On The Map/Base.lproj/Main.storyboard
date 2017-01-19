@@ -180,8 +180,8 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyV-FI-ii4" userLabel="Label View">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqT-f7-y9o">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqT-f7-y9o">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -190,7 +190,7 @@
                                                 <constraints>
                                                     <constraint firstItem="fqT-f7-y9o" firstAttribute="leading" secondItem="lyV-FI-ii4" secondAttribute="leading" constant="20" id="Aag-kj-d7u"/>
                                                     <constraint firstAttribute="trailing" secondItem="fqT-f7-y9o" secondAttribute="trailing" constant="20" id="HaC-Vj-ZoZ"/>
-                                                    <constraint firstItem="fqT-f7-y9o" firstAttribute="top" secondItem="lyV-FI-ii4" secondAttribute="top" constant="20" id="va0-9V-8Vj"/>
+                                                    <constraint firstItem="fqT-f7-y9o" firstAttribute="top" secondItem="lyV-FI-ii4" secondAttribute="top" constant="30" id="va0-9V-8Vj"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Media URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cqA-UE-rYe">
@@ -199,7 +199,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wja-6C-AAQ">
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Cancel"/>
                                                 <connections>
                                                     <action selector="cancelClicked:" destination="V8n-t4-6b9" eventType="touchUpInside" id="oNe-SJ-RwH"/>
@@ -210,12 +210,12 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="cqA-UE-rYe" secondAttribute="trailing" constant="10" id="8qy-J8-igu"/>
                                             <constraint firstItem="cqA-UE-rYe" firstAttribute="centerY" secondItem="22F-RF-qRI" secondAttribute="centerY" id="Iqf-bb-dMa"/>
-                                            <constraint firstAttribute="trailing" secondItem="Wja-6C-AAQ" secondAttribute="trailing" constant="5" id="L4s-tB-Vfa"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wja-6C-AAQ" secondAttribute="trailing" constant="10" id="L4s-tB-Vfa"/>
                                             <constraint firstItem="Wja-6C-AAQ" firstAttribute="top" secondItem="22F-RF-qRI" secondAttribute="top" constant="10" id="SqQ-Me-6PJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="lyV-FI-ii4" secondAttribute="trailing" constant="80" id="Ur9-wO-AyH"/>
+                                            <constraint firstAttribute="trailing" secondItem="lyV-FI-ii4" secondAttribute="trailing" constant="70" id="Ur9-wO-AyH"/>
                                             <constraint firstItem="cqA-UE-rYe" firstAttribute="leading" secondItem="22F-RF-qRI" secondAttribute="leading" constant="10" id="VXN-Zb-rnF"/>
                                             <constraint firstItem="lyV-FI-ii4" firstAttribute="top" secondItem="22F-RF-qRI" secondAttribute="top" constant="-10" id="XfG-iR-AJs"/>
-                                            <constraint firstItem="lyV-FI-ii4" firstAttribute="leading" secondItem="22F-RF-qRI" secondAttribute="leading" constant="80" id="bAv-UQ-9AO"/>
+                                            <constraint firstItem="lyV-FI-ii4" firstAttribute="leading" secondItem="22F-RF-qRI" secondAttribute="leading" constant="70" id="bAv-UQ-9AO"/>
                                             <constraint firstAttribute="bottom" secondItem="lyV-FI-ii4" secondAttribute="bottom" constant="9.5" id="zfy-rB-w1C"/>
                                         </constraints>
                                     </view>
@@ -279,11 +279,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="xS1-3d-AGt" secondAttribute="trailing" constant="102" id="DFp-Qc-W2w"/>
+                                            <constraint firstAttribute="trailing" secondItem="xS1-3d-AGt" secondAttribute="trailing" constant="50" id="DFp-Qc-W2w"/>
                                             <constraint firstItem="aIE-tP-ksu" firstAttribute="leading" secondItem="tVj-WY-91v" secondAttribute="leading" id="RiH-0O-w2H"/>
                                             <constraint firstItem="aIE-tP-ksu" firstAttribute="top" secondItem="tVj-WY-91v" secondAttribute="top" id="ab1-hg-gcL"/>
                                             <constraint firstItem="xS1-3d-AGt" firstAttribute="centerY" secondItem="tVj-WY-91v" secondAttribute="centerY" id="atg-I5-QbB"/>
-                                            <constraint firstItem="xS1-3d-AGt" firstAttribute="leading" secondItem="tVj-WY-91v" secondAttribute="leading" constant="102" id="o0G-2s-Mgw"/>
+                                            <constraint firstItem="xS1-3d-AGt" firstAttribute="leading" secondItem="tVj-WY-91v" secondAttribute="leading" constant="50" id="o0G-2s-Mgw"/>
                                             <constraint firstAttribute="bottom" secondItem="aIE-tP-ksu" secondAttribute="bottom" id="sMb-Kb-dKt"/>
                                             <constraint firstAttribute="trailing" secondItem="aIE-tP-ksu" secondAttribute="trailing" id="vmi-1J-Z7X"/>
                                         </constraints>
