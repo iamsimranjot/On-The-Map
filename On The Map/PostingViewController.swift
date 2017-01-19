@@ -72,9 +72,7 @@ class PostingViewController: UIViewController {
             parse_otm.updateStudentLocationWith(objectID: objectId, mediaURL: mediaURL, studentData: StudentLocationModel(objectID: objectId, student: dataSource_otm.studentUser!, location: location)) { (success, error) in
                 
                 if let _ = error {
-                    self.showAlert(message: AppConstants.Errors.postingFailed) { (alert) in
-                        self.dismiss(animated: true, completion: nil)
-                    }
+                    self.showAlert(message: AppConstants.Errors.postingFailed)
                 } else {
                     self.dataSource_otm.studentUser?.mediaURL = mediaURL
                     self.dataSource_otm.pinDownStudentsLocations()
@@ -84,9 +82,7 @@ class PostingViewController: UIViewController {
         } else {
             parse_otm.postStudentsLocation(studentData: StudentLocationModel(student: dataSource_otm.studentUser!, location: location), mediaURL: mediaURL) { (success, error) in
                 if let _ = error {
-                    self.showAlert(message: AppConstants.Errors.postingFailed) { (alert) in
-                        self.dismiss(animated: true, completion: nil)
-                    }
+                    self.showAlert(message: AppConstants.Errors.postingFailed)
                 } else {
                     self.dataSource_otm.studentUser?.mediaURL = mediaURL
                     self.dataSource_otm.pinDownStudentsLocations()
@@ -147,14 +143,7 @@ class PostingViewController: UIViewController {
             cancelButton.setTitleColor(UIColor.white, for: .normal)
         }
     }
-    
-    /*private func dropShadows(inView: UIView) {
-        let shadowPath = UIBezierPath(rect: inView.bounds)
-        inView.layer.masksToBounds = false
-        
-    }*/
-    
-    
+
     private func setLoadingView() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
@@ -173,7 +162,6 @@ class PostingViewController: UIViewController {
         findButton.isEnabled = enable
         cancelButton.isEnabled = enable
         locationTextField.isEnabled = enable
-        //top section label to be done
     }
     
     private func setAlphaForUI(_ alpha: CGFloat) {

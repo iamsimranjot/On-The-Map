@@ -30,7 +30,10 @@ class DataSource_OTM: NSObject {
             if let _ = error {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDownError), object: nil)
             } else {
-                self.studentLocations = studentLocationDics!
+                guard let studentLocationDics = studentLocationDics else {
+                    return
+                }
+                self.studentLocations = studentLocationDics
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil);
             }
         }

@@ -52,6 +52,7 @@
 		705D92241E0FC0B300963A9B /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = "On The Map/SessionManager.swift"; sourceTree = "<group>"; };
 		706E950D1E2F569100009675 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		70703FB01E25018300726AFF /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
+		707F0E541E314C990098184D /* On The Map.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "On The Map.entitlements"; sourceTree = "<group>"; };
 		70B9A6851E2A0A15008A5CDC /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 		70E737481E250C7C00E85A0B /* StudentLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationCell.swift; sourceTree = "<group>"; };
 		70EA6D2C1E25E77A00D515F6 /* Facebook_OTM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook_OTM.swift; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		705D92201E0F01A200963A9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				707F0E541E314C990098184D /* On The Map.entitlements */,
 				705D921A1E0EFC7400963A9B /* Info.plist */,
 				706E950D1E2F569100009675 /* UIColorExtension.swift */,
 			);
@@ -218,10 +220,11 @@
 				TargetAttributes = {
 					705D920A1E0EFC7400963A9B = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8MH4723CB5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -453,9 +456,10 @@
 			baseConfigurationReference = 4021FA32F2F704F3B9362411 /* Pods-On The Map.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "On The Map/On The Map.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Access Health (R668MC4SSB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MH4723CB5;
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -472,9 +476,10 @@
 			baseConfigurationReference = 6D96559891F453C9C99E93EC /* Pods-On The Map.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "On The Map/On The Map.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Access Health (R668MC4SSB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MH4723CB5;
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
