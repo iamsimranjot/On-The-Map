@@ -29,7 +29,6 @@ struct AppConstants {
         static let cannotOpenURL = "Cannot Open URL"
         static let unableToUpdateLocations = "Unable to update and pin down student locations."
         static let emptyurl = " You must enter a URL."
-        static let studentPlacemarkEmpty = "Student and placemark not initialized."
         static let emptyLocation = "Must enter a Location."
         static let couldNotGeocode = "Could not geocode the string."
         static let noLocationFound = "No location found."
