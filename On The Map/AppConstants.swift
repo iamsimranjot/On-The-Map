@@ -33,6 +33,7 @@ struct AppConstants {
         static let couldNotGeocode = "Could not geocode the string."
         static let noLocationFound = "No location found."
         static let postingFailed = "Student location could not be posted."
+        static let fetchingFailed = "Unable to fetch student locations. Please try again after some time or check your internet conectivity."
     }
     
     //MARK: Alerts

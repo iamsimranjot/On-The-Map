@@ -36,12 +36,22 @@ class MapViewController: UIViewController {
     //MARK: Helper Methods
     
     func alertWithError(error: String) {
+        UIApplication.shared.endIgnoringInteractionEvents()
+        self.view.alpha = 1.0
         let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
-        self.present(alertView, animated: true, completion: nil)
+        self.present(alertView, animated: true){
+            self.view.alpha = 1.0
+        }
     }
     
     func studentLocationsUpdated() {
+        
+        if dataSource_otm.studentLocations.isEmpty {
+            alertWithError(error: AppConstants.Errors.fetchingFailed)
+            return
+        }
+        
         var annotations = [MKPointAnnotation]()
         
         for studentLocation in dataSource_otm.studentLocations {
@@ -60,15 +70,9 @@ class MapViewController: UIViewController {
         }
     }
     
-    func disableUI() {
-        self.view.alpha = 0.7
-        UIApplication.shared.beginIgnoringInteractionEvents()
-    }
-    
     func observe() {
         // Observe Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(studentLocationsUpdated), name: NSNotification.Name(rawValue: AppConstants.notifications.studentLocationsPinnedDown), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(disableUI), name: NSNotification.Name(rawValue: AppConstants.notifications.loading), object: nil)
     }
 }
 

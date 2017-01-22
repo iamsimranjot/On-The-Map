@@ -36,7 +36,7 @@ class OnTheMapTabBarController: UITabBarController {
    //MARK: Actions
     
     @IBAction func logoutClicked(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConstants.notifications.loading), object: nil)
+        setView()
         udacity_otm.logout(){ (success, error) in
             if success == true {
                 DispatchQueue.main.async {
@@ -100,9 +100,12 @@ class OnTheMapTabBarController: UITabBarController {
     }
     
     private func alertWithError(error: String, title: String) {
+        unsetView()
         let alertView = UIAlertController(title: title, message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: AppConstants.AlertActions.dismiss, style: .cancel, handler: nil))
-        self.present(alertView, animated: true, completion: nil)
+        self.present(alertView, animated: true){
+            self.view.alpha = 1.0
+        }
     }
     
     private func overwriteAlert(completionClosure: @escaping (UIAlertAction) -> Void){
